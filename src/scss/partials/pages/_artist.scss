@@ -57,8 +57,8 @@
     }
 }
 
-.popularSongsTitle,
-.discoTitle {
+.popularSongsSectionTitle,
+.discoSectionTitle {
     font-size: 2.8rem;
     font-weight: 600;
     margin: 2rem 0;
@@ -97,7 +97,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     @media screen and (min-width: $md_breakpoint) {
         flex-direction: row;
         justify-content: flex-start;
@@ -107,32 +106,35 @@
 .discoOverviewWrap {
     text-align: center;
     .discoTitle {
-        font-size: 2.7rem;
+        font-size: 2.3rem;
         font-weight: 600;
         letter-spacing: -0.04rem;
         line-height: 3.6rem;
-        margin: 4rem 0 2rem 0;
+        margin: 3rem 0 1rem 0;
         @media screen and (min-width: $md_breakpoint) {
-            margin: 0 0 2rem 0;
+            margin: 0 0 1rem 0;
+        }
+        @media screen and (min-width: $lg_breakpoint) {
+            font-size: 2.5rem;
         }
     }
     .discoStack {
         font-size: 1.6rem;
         font-weight: 200;
-        line-height: 2.4rem;
         margin: 0;
-        @media screen and (min-width: $md_breakpoint) {
+        @media screen and (min-width: $xl_breakpoint) {
             font-size: 2rem;
-            line-height: 2.7rem;
+            line-height: 2.4rem;
         }
     }
     @media screen and (min-width: $md_breakpoint) {
+        width: 50%;
         text-align: left;
     }
 }
 
 .discoImageContainer {
-    height: 28rem;
+    height: 33rem;
     width: 28rem;
 
     img {
@@ -142,13 +144,12 @@
     }
     @media screen and (min-width: $md_breakpoint) {
         margin-right: 4rem;
-        height: 35rem;
-        width: 45rem;
+        width: 50%;
     }
     @media screen and (min-width: $lg_breakpoint) {
         margin-right: 6rem;
-        height: 34rem;
-        width: 65rem;
+        // height: 34rem;
+        // width: 65rem;
     }
 }
 
@@ -156,15 +157,28 @@
     margin-top: 10rem;
 }
 .discoContainer {
-    p {
-        margin-top: 4rem;
-        font-size: 1.4rem;
-        font-weight: 400;
-        line-height: 1.6rem;
-        color: $spotify-grey;
-        @media screen and (min-width: $md_breakpoint) {
-            font-size: 1.6rem;
-            line-height: 2rem;
-        }
+    margin-bottom: 10rem;
+}
+
+.showDiscoDesc {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.95rem;
+    color: $spotify-grey;
+    @media screen and (min-width: $md_breakpoint) {
+        margin-top: 2rem;
     }
+    @media screen and (min-width: $lg_breakpoint) {
+        margin-top: 1rem;
+    }
+    @media screen and (min-width: $xl_breakpoint) {
+        font-size: 1.6rem;
+        line-height: 2rem;
+    }
+}
+
+.hideDiscoDesc {
+    display: none;
 }

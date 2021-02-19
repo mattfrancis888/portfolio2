@@ -571,8 +571,8 @@ nav {
   }
 }
 
-.popularSongsTitle,
-.discoTitle {
+.popularSongsSectionTitle,
+.discoSectionTitle {
   font-size: 2.8rem;
   font-weight: 600;
   margin: 2rem 0;
@@ -625,37 +625,42 @@ nav {
   text-align: center;
 }
 .discoOverviewWrap .discoTitle {
-  font-size: 2.7rem;
+  font-size: 2.3rem;
   font-weight: 600;
   letter-spacing: -0.04rem;
   line-height: 3.6rem;
-  margin: 4rem 0 2rem 0;
+  margin: 3rem 0 1rem 0;
 }
 @media screen and (min-width: 768px) {
   .discoOverviewWrap .discoTitle {
-    margin: 0 0 2rem 0;
+    margin: 0 0 1rem 0;
+  }
+}
+@media screen and (min-width: 992px) {
+  .discoOverviewWrap .discoTitle {
+    font-size: 2.5rem;
   }
 }
 .discoOverviewWrap .discoStack {
   font-size: 1.6rem;
   font-weight: 200;
-  line-height: 2.4rem;
   margin: 0;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .discoOverviewWrap .discoStack {
     font-size: 2rem;
-    line-height: 2.7rem;
+    line-height: 2.4rem;
   }
 }
 @media screen and (min-width: 768px) {
   .discoOverviewWrap {
+    width: 50%;
     text-align: left;
   }
 }
 
 .discoImageContainer {
-  height: 28rem;
+  height: 33rem;
   width: 28rem;
 }
 .discoImageContainer img {
@@ -666,15 +671,12 @@ nav {
 @media screen and (min-width: 768px) {
   .discoImageContainer {
     margin-right: 4rem;
-    height: 35rem;
-    width: 45rem;
+    width: 50%;
   }
 }
 @media screen and (min-width: 992px) {
   .discoImageContainer {
     margin-right: 6rem;
-    height: 34rem;
-    width: 65rem;
   }
 }
 
@@ -682,18 +684,37 @@ nav {
   margin-top: 10rem;
 }
 
-.discoContainer p {
-  margin-top: 4rem;
+.discoContainer {
+  margin-bottom: 10rem;
+}
+
+.showDiscoDesc {
+  display: block;
+  margin-top: 1rem;
   font-size: 1.4rem;
   font-weight: 400;
-  line-height: 1.6rem;
+  line-height: 1.95rem;
   color: #b3b3b3;
 }
 @media screen and (min-width: 768px) {
-  .discoContainer p {
+  .showDiscoDesc {
+    margin-top: 2rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .showDiscoDesc {
+    margin-top: 1rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .showDiscoDesc {
     font-size: 1.6rem;
     line-height: 2rem;
   }
+}
+
+.hideDiscoDesc {
+  display: none;
 }
 
 /*# sourceMappingURL=main.css.map */
