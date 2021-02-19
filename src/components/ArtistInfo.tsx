@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { StoreState } from "../reducers";
 import FadeIn from "react-fade-in";
 import useWindowDimensions from "../windowDimensions";
+import { FiExternalLink } from "react-icons/fi";
+import { AiFillGithub } from "react-icons/ai";
 import linkedin from "../img/linkedin.gif";
 import linkedin_lg from "../img/linkedin_lg.png";
 import kijiji from "../img/kijiji.png";
@@ -27,7 +29,7 @@ import uoLg from "../img/uo_lg.jpg";
 import giphy from "../img/giphy.png";
 import giphyLg from "../img/giphy_lg.gif";
 import airbnbLg from "../img/airbnb_lg.png";
-import { LG_SCREEN_SIZE, SM_SCREEN_SIZE } from "../constants";
+import { LG_SCREEN_SIZE, SM_SCREEN_SIZE, MD_SCREEN_SIZE } from "../constants";
 const discoData = [
     {
         title: ` Multi-Docker`,
@@ -198,7 +200,7 @@ const discoData = [
         img: airbnbLg,
         imgLg: airbnbLg,
         github: `https://github.com/mattfrancis888/Airbnb`,
-        githubAPI: `https://github.com/mattfrancis888/giphy`,
+        githubAPI: `https://github.com/mattfrancis888/Airbnb-API`,
     },
 ];
 const ArtistInfo: React.FC<{}> = (props) => {
@@ -268,24 +270,125 @@ const ArtistInfo: React.FC<{}> = (props) => {
                             <h2 className="discoStack">{disco.stack}</h2>
                             <p
                                 className={
-                                    width > LG_SCREEN_SIZE
+                                    width > MD_SCREEN_SIZE
                                         ? "showDiscoDesc"
                                         : "hideDiscoDesc"
                                 }
                             >
                                 {disco.description}
                             </p>
+                            {!disco.githubAPI && (
+                                <div
+                                    className={
+                                        width > MD_SCREEN_SIZE
+                                            ? "showGitHubAndExternalWrap"
+                                            : "hideGitHubAndExternalWrap"
+                                    }
+                                >
+                                    <a
+                                        href={disco.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <AiFillGithub className="githubAndExternalIcon" />
+                                    </a>
+                                    <a
+                                        href={disco.demo}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <FiExternalLink className="githubAndExternalIcon" />
+                                    </a>
+                                </div>
+                            )}
+
+                            {disco.githubAPI && (
+                                <div
+                                    className={
+                                        width > MD_SCREEN_SIZE
+                                            ? "showGitHubAndExternalWrap"
+                                            : "hideGitHubAndExternalWrap"
+                                    }
+                                >
+                                    <h2>App:</h2>
+                                    <a
+                                        href={disco.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <AiFillGithub className="githubAndExternalIcon" />
+                                    </a>
+                                    <h2>API: </h2>
+                                    <a
+                                        href={disco.githubAPI}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <AiFillGithub className="githubAndExternalIcon" />
+                                    </a>
+                                </div>
+                            )}
                         </div>
                     </div>
                     <p
                         className={
-                            width < LG_SCREEN_SIZE
+                            width < MD_SCREEN_SIZE
                                 ? "showDiscoDesc"
                                 : "hideDiscoDesc"
                         }
                     >
                         {disco.description}
                     </p>
+                    {!disco.githubAPI && (
+                        <div
+                            className={
+                                width < MD_SCREEN_SIZE
+                                    ? "showGitHubAndExternalWrap"
+                                    : "hideGitHubAndExternalWrap"
+                            }
+                        >
+                            <a
+                                href={disco.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <AiFillGithub className="githubAndExternalIcon" />
+                            </a>
+                            <a
+                                href={disco.demo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <FiExternalLink className="githubAndExternalIcon" />
+                            </a>
+                        </div>
+                    )}
+                    {disco.githubAPI && (
+                        <div
+                            className={
+                                width < MD_SCREEN_SIZE
+                                    ? "showGitHubAndExternalWrap"
+                                    : "hideGitHubAndExternalWrap"
+                            }
+                        >
+                            <h2>App:</h2>
+                            <a
+                                href={disco.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <AiFillGithub className="githubAndExternalIcon" />
+                            </a>
+                            <h2>API: </h2>
+                            <a
+                                href={disco.githubAPI}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <AiFillGithub className="githubAndExternalIcon" />
+                            </a>
+                        </div>
+                    )}
                 </div>
             );
         });
