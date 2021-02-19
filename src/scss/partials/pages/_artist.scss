@@ -73,24 +73,60 @@
 .song {
     display: flex;
     align-items: center;
-    h1 {
-        font-size: 1.6rem;
-        font-weight: 600;
-        letter-spacing: 0.015rsem;
-    }
+    justify-content: space-between;
+    padding: 0.7rem;
     margin: 1rem 0;
+    &:hover {
+        .songLength {
+            color: white;
+        }
+        cursor: pointer;
+        background-color: hsla(0, 0%, 100%, 0.1);
+    }
 }
 
-.songImageContainer {
-    height: 7rem;
-    width: 7rem;
-    margin-right: 1.4rem;
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+.songIconAndTitleWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h1 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 0.015rem;
+        @media screen and (min-width: $md_breakpoint) {
+            font-size: 1.6rem;
+        }
     }
 }
+
+.playAndMusicalNoteicon {
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 1.6rem;
+    margin-right: 2rem;
+    @media screen and (min-width: $md_breakpoint) {
+        font-size: 2.5rem;
+    }
+}
+
+.songLength {
+    font-size: 1.2rem;
+    color: $spotify-grey;
+    @media screen and (min-width: $md_breakpoint) {
+        font-size: 1.6rem;
+    }
+}
+
+// .songImageContainer {
+//     height: 7rem;
+//     width: 7rem;
+//     margin-right: 1.4rem;
+//     img {
+//         width: 100%;
+//         height: 100%;
+//         object-fit: contain;
+//     }
+// }
 
 .discoImageAndOverviewWrap {
     display: flex;
@@ -119,12 +155,15 @@
         }
     }
     .discoStack {
+        text-align: left;
         font-size: 1.6rem;
-        font-weight: 400;
+        font-weight: 800;
+        line-height: 2.3rem;
         margin: 0;
+
         @media screen and (min-width: $xl_breakpoint) {
             font-size: 2rem;
-            line-height: 2.4rem;
+            line-height: 2.5rem;
         }
     }
     @media screen and (min-width: $md_breakpoint) {
@@ -154,7 +193,7 @@
 }
 
 .discoListWrap {
-    margin-top: 10rem;
+    margin-top: 5rem;
 }
 .discoContainer {
     margin-bottom: 10rem;
@@ -205,4 +244,8 @@
     @media screen and (min-width: $md_breakpoint) {
         font-size: 2.5rem;
     }
+}
+
+.invisibleSpan {
+    display: invisible;
 }

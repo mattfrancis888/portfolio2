@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { StoreState } from "../reducers";
 import FadeIn from "react-fade-in";
+
 import useWindowDimensions from "../windowDimensions";
 import { FiExternalLink } from "react-icons/fi";
 import { AiFillGithub } from "react-icons/ai";
+import { IoMdMusicalNotes } from "react-icons/io";
+import { FaPlay } from "react-icons/fa";
 import linkedin from "../img/linkedin.gif";
 import linkedin_lg from "../img/linkedin_lg.png";
 import kijiji from "../img/kijiji.png";
@@ -203,11 +206,21 @@ const discoData = [
         githubAPI: `https://github.com/mattfrancis888/Airbnb-API`,
     },
 ];
+
 const ArtistInfo: React.FC<{}> = (props) => {
     const [isSongsImageLoaded, setIsSongsImageLoaded] = useState(false);
     const [isBannerImageLoaded, setIsBannerImageLoaded] = useState(false);
     const { width } = useWindowDimensions();
 
+    const popularSong1 = useRef(null);
+    const popularSong2 = useRef(null);
+    const popularSong3 = useRef(null);
+    const executeScroll1 = () =>
+        popularSong1.current.scrollIntoView({ behavior: "smooth" });
+    const executeScroll2 = () =>
+        popularSong2.current.scrollIntoView({ behavior: "smooth" });
+    const executeScroll3 = () =>
+        popularSong3.current.scrollIntoView({ behavior: "smooth" });
     // const renderHeader = (): JSX.Element => {
     //     if (props.artists.length === 0) return <Header artistName="" />;
     //     else
@@ -240,9 +253,32 @@ const ArtistInfo: React.FC<{}> = (props) => {
 
     const renderSongs = (): JSX.Element | JSX.Element[] => {
         return (
-            <div className="songImageContainer">
-                <h1>Hello</h1>
-            </div>
+            <React.Fragment>
+                <div className="song" onClick={executeScroll1}>
+                    <div className="songIconAndTitleWrap">
+                        <FaPlay className="playAndMusicalNoteicon" />
+                        <IoMdMusicalNotes className="playAndMusicalNoteicon" />
+                        <h1>Kijiji</h1>
+                    </div>
+                    <p className="songLength">2:01</p>
+                </div>
+                <div className="song" onClick={executeScroll2}>
+                    <div className="songIconAndTitleWrap">
+                        <FaPlay className="playAndMusicalNoteicon" />
+                        <IoMdMusicalNotes className="playAndMusicalNoteicon" />
+                        <h1>Dreamworks</h1>
+                    </div>
+                    <p className="songLength">3:30</p>
+                </div>
+                <div className="song" onClick={executeScroll3}>
+                    <div className="songIconAndTitleWrap">
+                        <FaPlay className="playAndMusicalNoteicon" />
+                        <IoMdMusicalNotes className="playAndMusicalNoteicon" />
+                        <h1>Pixar</h1>
+                    </div>
+                    <p className="songLength">4:01</p>
+                </div>
+            </React.Fragment>
         );
     };
 
@@ -250,6 +286,24 @@ const ArtistInfo: React.FC<{}> = (props) => {
         return discoData.map((disco, index) => {
             return (
                 <div key={index} className="discoContainer">
+                    {disco.title === "Kijiji" && (
+                        <span
+                            className="invisibleSpan"
+                            ref={popularSong1}
+                        ></span>
+                    )}
+                    {disco.title === "Dreamworks" && (
+                        <span
+                            className="invisibleSpan"
+                            ref={popularSong2}
+                        ></span>
+                    )}
+                    {disco.title === "Pixar" && (
+                        <span
+                            className="invisibleSpan"
+                            ref={popularSong3}
+                        ></span>
+                    )}
                     <div className="discoImageAndOverviewWrap">
                         <div className="discoImageContainer">
                             {/* <img src={linkedin} alt="proj-pic" /> */}
@@ -401,6 +455,8 @@ const ArtistInfo: React.FC<{}> = (props) => {
                 {renderBannerAndName()}
                 <div className="popularSongsAndDiscoWrap">
                     <h2 className="popularSongsSectionTitle">Popular Songs</h2>
+                    {renderSongs()}
+
                     {/* {!isSongsImageLoaded && (
                         <FadeIn>
                             <SongsPlaceholder />
@@ -416,9 +472,7 @@ const ArtistInfo: React.FC<{}> = (props) => {
                         onLoad={() => {
                             setTimeout(() => setIsSongsImageLoaded(true), 1000);
                         }}
-                    >
-                        {renderSongs()}
-                    </div>
+                    ></div>
                 </div>
                 <div className="popularSongsAndDiscoWrap">
                     <h2 className="discoSectionTitle">Discography</h2>
