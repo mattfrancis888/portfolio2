@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { StoreState } from "../reducers";
 import FadeIn from "react-fade-in";
+import Header from "./Header";
 
 import useWindowDimensions from "../windowDimensions";
 import { FiExternalLink } from "react-icons/fi";
@@ -231,15 +232,9 @@ const ArtistInfo: React.FC<{}> = (props) => {
         popularSong3.current.scrollIntoView({ behavior: "smooth" });
         setShowMore(true);
     };
-    // const renderHeader = (): JSX.Element => {
-    //     if (props.artists.length === 0) return <Header artistName="" />;
-    //     else
-    //         return (
-    //             <Header
-    //                 artistName={`${props.artists[0].firstName} ${props.artists[0].lastName}`}
-    //             />
-    //         );
-    // };
+    const renderHeader = (): JSX.Element => {
+        return <Header artistName="Matthew Francis" />;
+    };
     const renderBannerAndName = (): JSX.Element | JSX.Element[] => {
         return (
             <div className="bannerContainer">
@@ -256,7 +251,13 @@ const ArtistInfo: React.FC<{}> = (props) => {
                         setTimeout(() => setIsBannerImageLoaded(true), 1000);
                     }}
                 ></img>
-                <h1 className="artistFullName">Matthew Francis</h1>
+                <div className="bannerFade"></div>
+                <div className="fullNameAndMonthlyListenerWrap">
+                    <h1 className="artistFullName">Matthew Francis</h1>
+                    <h3 className="monthlyListeners">
+                        50,981,396 monthly listeners
+                    </h3>
+                </div>
             </div>
         );
     };
@@ -460,7 +461,7 @@ const ArtistInfo: React.FC<{}> = (props) => {
 
     return (
         <React.Fragment>
-            {/* {renderHeader()} */}
+            {renderHeader()}
             <div className="artistContainer">
                 {renderBannerAndName()}
                 <div className="popularSongsAndDiscoWrap">

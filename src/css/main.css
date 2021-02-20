@@ -521,33 +521,22 @@ nav {
   position: relative;
   width: 100%;
   min-width: 37rem;
-  height: 30rem;
+  height: 35rem;
   margin-bottom: 2rem;
+}
+.bannerContainer .bannerFade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
 }
 .bannerContainer img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: opacity 0.5s;
-}
-.bannerContainer .artistFullName {
-  position: absolute;
-  left: 2rem;
-  bottom: 3.5rem;
-  font-size: 5rem;
-  font-weight: 900;
-  letter-spacing: -0.2rem;
-  margin: 0;
-}
-@media screen and (min-width: 768px) {
-  .bannerContainer .artistFullName {
-    font-size: 7.5rem;
-  }
-}
-@media screen and (min-width: 992px) {
-  .bannerContainer .artistFullName {
-    font-size: 9.5rem;
-  }
 }
 .bannerContainer .heartsIcon {
   cursor: pointer;
@@ -560,6 +549,42 @@ nav {
   right: 6rem;
   bottom: -1rem;
   font-size: 2.5rem;
+}
+
+.fullNameAndMonthlyListenerWrap {
+  position: absolute;
+  left: 2rem;
+  bottom: 3.5rem;
+}
+.fullNameAndMonthlyListenerWrap .artistFullName {
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: -0.2rem;
+  margin: 0;
+}
+@media screen and (min-width: 768px) {
+  .fullNameAndMonthlyListenerWrap .artistFullName {
+    font-size: 7.5rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .fullNameAndMonthlyListenerWrap .artistFullName {
+    font-size: 9.5rem;
+  }
+}
+.fullNameAndMonthlyListenerWrap .monthlyListeners {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+@media screen and (min-width: 768px) {
+  .fullNameAndMonthlyListenerWrap .monthlyListeners {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .fullNameAndMonthlyListenerWrap .monthlyListeners {
+    font-size: 1.9rem;
+  }
 }
 
 .popularSongsAndDiscoWrap {
@@ -744,6 +769,11 @@ nav {
   outline: none !important;
   border-radius: 5rem;
   cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .showMoreButton {
+    font-size: 1.4rem;
+  }
 }
 
 .discoContainer {
