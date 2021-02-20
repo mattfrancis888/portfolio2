@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Loading from "./Loading";
 import useWindowDimensions from "../windowDimensions";
 import anime from "animejs/lib/anime.es.js";
 import thomasRhett from "../img/thomasRhett.jpg";
@@ -41,6 +42,7 @@ const artistData = [
 ];
 const FansAlsoLike: React.FC<{}> = () => {
     const { width } = useWindowDimensions();
+    const [isDoneLoading, setIsDoneLoading] = useState(false);
     const renderArtists = (): JSX.Element | JSX.Element[] => {
         return artistData.map((artist, index) => {
             return (
@@ -69,26 +71,37 @@ const FansAlsoLike: React.FC<{}> = () => {
     };
 
     return (
-        <div
-            className="fansAlsoLikeArtistsWrap"
-            onLoad={() => {
-                anime({
-                    targets: ".fansAlsoLikeArtistsWrap",
-                    // Properties
-                    // Animation Parameters
+        <React.Fragment>
+            <div
+                className="fansAlsoLikeArtistsWrap"
+                onLoad={() => {
+                    anime({
+                        targets: ".fansAlsoLikeArtistsWrap",
+                        // Properties
+                        // Animation Parameters
 
-                    opacity: [
-                        {
-                            value: [0, 1],
-                            duration: 250,
-                            easing: "easeOutQuad",
-                        },
-                    ],
-                });
-            }}
-        >
-            {renderArtists()}
-        </div>
+                        opacity: [
+                            {
+                                value: [0, 1],
+                                duration: 250,
+                                easing: "easeOutQuad",
+                            },
+                        ],
+                    });
+                    setTimeout(() => setIsDoneLoading(true), 250);
+                }}
+            >
+                {renderArtists()}
+            </div>
+            <div
+                className="loadingCenter"
+                style={
+                    isDoneLoading ? { display: "none" } : { display: "flex" }
+                }
+            >
+                <Loading />
+            </div>
+        </React.Fragment>
     );
 };
 

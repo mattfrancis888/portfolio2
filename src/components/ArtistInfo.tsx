@@ -5,7 +5,7 @@ import FadeIn from "react-fade-in";
 import LazyLoad from "react-lazyload";
 import anime from "animejs/lib/anime.es.js";
 import Header from "./Header";
-
+import Loading from "./Loading";
 import useWindowDimensions from "../windowDimensions";
 import { FiExternalLink } from "react-icons/fi";
 import { AiFillGithub } from "react-icons/ai";
@@ -220,7 +220,7 @@ const discoData = [
 
 const ArtistInfo: React.FC<{}> = (props) => {
     const [showMore, setShowMore] = useState(false);
-    const [isSongsImageLoaded, setIsSongsImageLoaded] = useState(false);
+
     const [isBannerImageLoaded, setIsBannerImageLoaded] = useState(false);
     const { width } = useWindowDimensions();
 
@@ -495,17 +495,7 @@ const ArtistInfo: React.FC<{}> = (props) => {
                     <h2 className="artistInfoSectionTitle">Popular Songs</h2>
                     {renderSongs()}
 
-                    <div
-                        className="songsListWrap"
-                        style={
-                            !isSongsImageLoaded
-                                ? { display: "none" }
-                                : { display: "block" }
-                        }
-                        onLoad={() => {
-                            setTimeout(() => setIsSongsImageLoaded(true), 1000);
-                        }}
-                    ></div>
+                    <div className="songsListWrap"></div>
                 </div>
                 <div className="artistInfoSectionWrap">
                     <h2 className="artistInfoSectionTitle">Discography</h2>

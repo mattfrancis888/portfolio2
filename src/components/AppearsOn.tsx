@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useWindowDimensions from "../windowDimensions";
 import hiphop from "../img/hiphop.jpg";
 import country from "../img/country.jpg";
@@ -7,6 +7,7 @@ import dance from "../img/dance.jpg";
 import alt from "../img/alt.jpg";
 import rock from "../img/rock.jpg";
 import anime from "animejs/lib/anime.es.js";
+import Loading from "./Loading";
 const playlistData = [
     {
         name: `Hot Country`,
@@ -41,7 +42,7 @@ const playlistData = [
     },
 ];
 const AppearsOn: React.FC<{}> = () => {
-    const { width } = useWindowDimensions();
+    const [isDoneLoading, setIsDoneLoading] = useState(false);
     const renderPlaylists = (): JSX.Element | JSX.Element[] => {
         return playlistData.map((playlist, index) => {
             return (
@@ -66,26 +67,37 @@ const AppearsOn: React.FC<{}> = () => {
     };
 
     return (
-        <div
-            className="appearsOnWrap"
-            onLoad={() => {
-                anime({
-                    targets: ".appearsOnWrap",
-                    // Properties
-                    // Animation Parameters
+        <React.Fragment>
+            <div
+                className="appearsOnWrap"
+                onLoad={() => {
+                    anime({
+                        targets: ".appearsOnWrap",
+                        // Properties
+                        // Animation Parameters
 
-                    opacity: [
-                        {
-                            value: [0, 1],
-                            duration: 250,
-                            easing: "easeOutQuad",
-                        },
-                    ],
-                });
-            }}
-        >
-            {renderPlaylists()}
-        </div>
+                        opacity: [
+                            {
+                                value: [0, 1],
+                                duration: 250,
+                                easing: "easeOutQuad",
+                            },
+                        ],
+                    });
+                    setTimeout(() => setIsDoneLoading(true), 250);
+                }}
+            >
+                {renderPlaylists()}
+            </div>
+            <div
+                className="loadingCenter"
+                style={
+                    isDoneLoading ? { display: "none" } : { display: "flex" }
+                }
+            >
+                <Loading />
+            </div>
+        </React.Fragment>
     );
 };
 
