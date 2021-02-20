@@ -257,6 +257,7 @@ discoPicture {
     font-weight: 400;
     line-height: 1.95rem;
     color: $spotify-grey;
+    text-align: left;
 
     @media screen and (min-width: $md_breakpoint) {
         margin-top: 2rem;

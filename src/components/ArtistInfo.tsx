@@ -362,7 +362,7 @@ const ArtistInfo: React.FC<{}> = (props) => {
                             <h2 className="discoStack">{disco.stack}</h2>
                             <p
                                 className={
-                                    width > MD_SCREEN_SIZE
+                                    width > SM_SCREEN_SIZE
                                         ? "showDiscoDesc"
                                         : "hideDiscoDesc"
                                 }
@@ -424,7 +424,7 @@ const ArtistInfo: React.FC<{}> = (props) => {
                     </div>
                     <p
                         className={
-                            width < MD_SCREEN_SIZE
+                            width < SM_SCREEN_SIZE
                                 ? "showDiscoDesc"
                                 : "hideDiscoDesc"
                         }
@@ -508,7 +508,7 @@ const ArtistInfo: React.FC<{}> = (props) => {
                     ></div>
                 </div>
                 <div className="artistInfoSectionWrap">
-                    <h2 className="discoSectionTitle">Discography</h2>
+                    <h2 className="artistInfoSectionTitle">Discography</h2>
                     <div className={showMore ? "" : "discoListWrap"}>
                         {renderDisco()}
                         <div className="readMoreFade"></div>
@@ -523,19 +523,42 @@ const ArtistInfo: React.FC<{}> = (props) => {
                     </button>
                 </div>
 
-                <div className="artistInfoSectionWrap">
-                    <h2 className="artistInfoSectionTitle">Fans Also Like</h2>
-                    <FansAlsoLike />
-                </div>
-                <div className="artistInfoSectionWrap">
-                    <h2 className="artistInfoSectionTitle">Appears On</h2>
-                    <AppearsOn />
-                </div>
+                <LazyLoad
+                    width={100}
+                    height={100}
+                    debounce={false}
+                    offsetVertical={500}
+                >
+                    <div className="artistInfoSectionWrap">
+                        <h2 className="artistInfoSectionTitle">
+                            Fans Also Like
+                        </h2>
+                        <FansAlsoLike />
+                    </div>
+                </LazyLoad>
+                <LazyLoad
+                    width={100}
+                    height={100}
+                    debounce={false}
+                    offsetVertical={500}
+                >
+                    <div className="artistInfoSectionWrap">
+                        <h2 className="artistInfoSectionTitle">Appears On</h2>
+                        <AppearsOn />
+                    </div>
+                </LazyLoad>
 
-                <div className="artistInfoSectionWrap">
-                    <h2 className="artistInfoSectionTitle">About</h2>
-                    <About />
-                </div>
+                <LazyLoad
+                    width={100}
+                    height={100}
+                    debounce={false}
+                    offsetVertical={500}
+                >
+                    <div className="artistInfoSectionWrap">
+                        <h2 className="artistInfoSectionTitle">About</h2>
+                        <About />
+                    </div>
+                </LazyLoad>
             </div>
         </React.Fragment>
     );

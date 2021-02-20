@@ -1,11 +1,6 @@
 import React from "react";
 import useWindowDimensions from "../windowDimensions";
-import {
-    LG_SCREEN_SIZE,
-    SM_SCREEN_SIZE,
-    MD_SCREEN_SIZE,
-    XS_SCREEN_SIZE,
-} from "../constants";
+import anime from "animejs/lib/anime.es.js";
 import thomasRhett from "../img/thomasRhett.jpg";
 import chainsmokers from "../img/chainsmokers.jpg";
 import taylorSwift from "../img/taylorSwift.jpg";
@@ -73,7 +68,28 @@ const FansAlsoLike: React.FC<{}> = () => {
         });
     };
 
-    return <div className="fansAlsoLikeArtistsWrap">{renderArtists()}</div>;
+    return (
+        <div
+            className="fansAlsoLikeArtistsWrap"
+            onLoad={() => {
+                anime({
+                    targets: ".fansAlsoLikeArtistsWrap",
+                    // Properties
+                    // Animation Parameters
+
+                    opacity: [
+                        {
+                            value: [0, 1],
+                            duration: 250,
+                            easing: "easeOutQuad",
+                        },
+                    ],
+                });
+            }}
+        >
+            {renderArtists()}
+        </div>
+    );
 };
 
 export default FansAlsoLike;

@@ -7,10 +7,7 @@ const App: React.FC<{}> = () => {
     history.listen((_) => {
         window.scrollTo(0, 0);
     });
-    // console.log(
-    //     "REACT_APP_NOT_SECRET_CODE",
-    //     process.env.REACT_APP_NOT_SECRET_CODE
-    // );
+
     return (
         <Router history={history}>
             <Routes />
