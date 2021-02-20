@@ -65,6 +65,10 @@
     margin-bottom: 3rem;
     color: white;
 }
+
+.discoSectionTitle {
+    margin-bottom: 8rem;
+}
 .songsListWrap {
     display: flex;
     flex-direction: column;
@@ -193,7 +197,32 @@
 }
 
 .discoListWrap {
-    margin-top: 5rem;
+    position: relative;
+    overflow: hidden;
+    max-height: 200rem;
+    .readMoreFade {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        z-index: 1;
+        background: linear-gradient(0deg, $spotify-black 0, rgba(4, 25, 57, 0));
+    }
+}
+
+.showMoreButton {
+    margin-top: 4rem;
+    margin-left: 2rem;
+    text-transform: uppercase;
+    padding: 1rem 5rem;
+    border: 2px solid white;
+    color: white;
+    background-color: transparent;
+    font-weight: 900;
+    outline: none !important;
+    border-radius: 5rem;
+    cursor: pointer;
 }
 .discoContainer {
     margin-bottom: 10rem;
@@ -220,7 +249,8 @@
 }
 
 .hideDiscoDesc,
-.hideGitHubAndExternalWrap {
+.hideGitHubAndExternalWrap,
+.showMoreButtonHide {
     display: none;
 }
 

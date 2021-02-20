@@ -580,6 +580,10 @@ nav {
   color: white;
 }
 
+.discoSectionTitle {
+  margin-bottom: 8rem;
+}
+
 .songsListWrap {
   display: flex;
   flex-direction: column;
@@ -714,7 +718,32 @@ nav {
 }
 
 .discoListWrap {
-  margin-top: 5rem;
+  position: relative;
+  overflow: hidden;
+  max-height: 200rem;
+}
+.discoListWrap .readMoreFade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 1;
+  background: linear-gradient(0deg, #121212 0, rgba(4, 25, 57, 0));
+}
+
+.showMoreButton {
+  margin-top: 4rem;
+  margin-left: 2rem;
+  text-transform: uppercase;
+  padding: 1rem 5rem;
+  border: 2px solid white;
+  color: white;
+  background-color: transparent;
+  font-weight: 900;
+  outline: none !important;
+  border-radius: 5rem;
+  cursor: pointer;
 }
 
 .discoContainer {
@@ -747,7 +776,8 @@ nav {
 }
 
 .hideDiscoDesc,
-.hideGitHubAndExternalWrap {
+.hideGitHubAndExternalWrap,
+.showMoreButtonHide {
   display: none;
 }
 

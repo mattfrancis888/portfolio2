@@ -208,6 +208,7 @@ const discoData = [
 ];
 
 const ArtistInfo: React.FC<{}> = (props) => {
+    const [showMore, setShowMore] = useState(false);
     const [isSongsImageLoaded, setIsSongsImageLoaded] = useState(false);
     const [isBannerImageLoaded, setIsBannerImageLoaded] = useState(false);
     const { width } = useWindowDimensions();
@@ -215,12 +216,21 @@ const ArtistInfo: React.FC<{}> = (props) => {
     const popularSong1 = useRef(null);
     const popularSong2 = useRef(null);
     const popularSong3 = useRef(null);
-    const executeScroll1 = () =>
+    const executeScroll1 = () => {
+        //@ts-ignore
         popularSong1.current.scrollIntoView({ behavior: "smooth" });
-    const executeScroll2 = () =>
+        setShowMore(true);
+    };
+    const executeScroll2 = () => {
+        //@ts-ignore
         popularSong2.current.scrollIntoView({ behavior: "smooth" });
-    const executeScroll3 = () =>
+        setShowMore(true);
+    };
+    const executeScroll3 = () => {
+        //@ts-ignore
         popularSong3.current.scrollIntoView({ behavior: "smooth" });
+        setShowMore(true);
+    };
     // const renderHeader = (): JSX.Element => {
     //     if (props.artists.length === 0) return <Header artistName="" />;
     //     else
@@ -476,7 +486,18 @@ const ArtistInfo: React.FC<{}> = (props) => {
                 </div>
                 <div className="popularSongsAndDiscoWrap">
                     <h2 className="discoSectionTitle">Discography</h2>
-                    <div className="discoListWrap">{renderDisco()}</div>
+                    <div className={showMore ? "" : "discoListWrap"}>
+                        {renderDisco()}
+                        <div className="readMoreFade"></div>
+                    </div>
+                    <button
+                        onClick={() => setShowMore(true)}
+                        className={
+                            showMore ? "showMoreButtonHide" : "showMoreButton"
+                        }
+                    >
+                        Show More
+                    </button>
                 </div>
             </div>
         </React.Fragment>
