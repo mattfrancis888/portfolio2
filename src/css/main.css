@@ -667,6 +667,11 @@ nav {
   }
 }
 
+.discoContainer,
+discoPicture {
+  opacity: 0;
+}
+
 .discoImageAndOverviewWrap {
   display: flex;
   flex-direction: column;

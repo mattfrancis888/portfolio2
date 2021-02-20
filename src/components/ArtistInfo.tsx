@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { StoreState } from "../reducers";
 import FadeIn from "react-fade-in";
+import LazyLoad from "react-lazyload";
+import anime from "animejs/lib/anime.es.js";
 import Header from "./Header";
 
 import useWindowDimensions from "../windowDimensions";
@@ -296,165 +298,189 @@ const ArtistInfo: React.FC<{}> = (props) => {
     const renderDisco = (): JSX.Element | JSX.Element[] => {
         return discoData.map((disco, index) => {
             return (
-                <div key={index} className="discoContainer">
-                    {disco.title === "Kijiji" && (
-                        <span
-                            className="invisibleSpan"
-                            ref={popularSong1}
-                        ></span>
-                    )}
-                    {disco.title === "Dreamworks" && (
-                        <span
-                            className="invisibleSpan"
-                            ref={popularSong2}
-                        ></span>
-                    )}
-                    {disco.title === "Pixar" && (
-                        <span
-                            className="invisibleSpan"
-                            ref={popularSong3}
-                        ></span>
-                    )}
-                    <div className="discoImageAndOverviewWrap">
-                        <div className="discoImageContainer">
-                            {/* <img src={linkedin} alt="proj-pic" /> */}
-                            <picture>
-                                <source
-                                    media={`(min-width:${LG_SCREEN_SIZE}px)`}
-                                    srcSet={disco.imgLg}
-                                />
-                                <source
-                                    media={`(min-width:${SM_SCREEN_SIZE}px)`}
-                                    srcSet={disco.img}
-                                />
-                                <img src={disco.imgLg} alt="project" />
-                            </picture>
+                <LazyLoad
+                    width={100}
+                    height={100}
+                    debounce={false}
+                    offsetVertical={800}
+                >
+                    <div
+                        key={index}
+                        className={`discoContainer discoContainer${index}`}
+                        onLoad={() => {
+                            anime({
+                                targets: `.discoContainer${index}`,
+                                // Properties
+                                // Animation Parameters
+
+                                opacity: [
+                                    {
+                                        value: [0, 1],
+                                        duration: 1000,
+                                        easing: "easeOutQuad",
+                                    },
+                                ],
+                            });
+                        }}
+                    >
+                        {disco.title === "Kijiji" && (
+                            <span
+                                className="invisibleSpan"
+                                ref={popularSong1}
+                            ></span>
+                        )}
+                        {disco.title === "Dreamworks" && (
+                            <span
+                                className="invisibleSpan"
+                                ref={popularSong2}
+                            ></span>
+                        )}
+                        {disco.title === "Pixar" && (
+                            <span
+                                className="invisibleSpan"
+                                ref={popularSong3}
+                            ></span>
+                        )}
+                        <div className="discoImageAndOverviewWrap">
+                            <div className="discoImageContainer">
+                                <picture className={` discoPicture`}>
+                                    <source
+                                        media={`(min-width:${LG_SCREEN_SIZE}px)`}
+                                        srcSet={disco.imgLg}
+                                    />
+                                    <source
+                                        media={`(min-width:${SM_SCREEN_SIZE}px)`}
+                                        srcSet={disco.img}
+                                    />
+                                    <img src={disco.imgLg} alt="project" />
+                                </picture>
+                            </div>
+                            <div className="discoOverviewWrap">
+                                <h2 className="discoTitle">{disco.title}</h2>
+                                <h2 className="discoStack">{disco.stack}</h2>
+                                <p
+                                    className={
+                                        width > MD_SCREEN_SIZE
+                                            ? "showDiscoDesc"
+                                            : "hideDiscoDesc"
+                                    }
+                                >
+                                    {disco.description}
+                                </p>
+                                {!disco.githubAPI && (
+                                    <div
+                                        className={
+                                            width > MD_SCREEN_SIZE
+                                                ? "showGitHubAndExternalWrap"
+                                                : "hideGitHubAndExternalWrap"
+                                        }
+                                    >
+                                        <a
+                                            href={disco.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <AiFillGithub className="githubAndExternalIcon" />
+                                        </a>
+                                        <a
+                                            href={disco.demo}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <FiExternalLink className="githubAndExternalIcon" />
+                                        </a>
+                                    </div>
+                                )}
+
+                                {disco.githubAPI && (
+                                    <div
+                                        className={
+                                            width > MD_SCREEN_SIZE
+                                                ? "showGitHubAndExternalWrap"
+                                                : "hideGitHubAndExternalWrap"
+                                        }
+                                    >
+                                        <h2>App:</h2>
+                                        <a
+                                            href={disco.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <AiFillGithub className="githubAndExternalIcon" />
+                                        </a>
+                                        <h2>API: </h2>
+                                        <a
+                                            href={disco.githubAPI}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <AiFillGithub className="githubAndExternalIcon" />
+                                        </a>
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                        <div className="discoOverviewWrap">
-                            <h2 className="discoTitle">{disco.title}</h2>
-                            <h2 className="discoStack">{disco.stack}</h2>
-                            <p
+                        <p
+                            className={
+                                width < MD_SCREEN_SIZE
+                                    ? "showDiscoDesc"
+                                    : "hideDiscoDesc"
+                            }
+                        >
+                            {disco.description}
+                        </p>
+                        {!disco.githubAPI && (
+                            <div
                                 className={
-                                    width > MD_SCREEN_SIZE
-                                        ? "showDiscoDesc"
-                                        : "hideDiscoDesc"
+                                    width < MD_SCREEN_SIZE
+                                        ? "showGitHubAndExternalWrap"
+                                        : "hideGitHubAndExternalWrap"
                                 }
                             >
-                                {disco.description}
-                            </p>
-                            {!disco.githubAPI && (
-                                <div
-                                    className={
-                                        width > MD_SCREEN_SIZE
-                                            ? "showGitHubAndExternalWrap"
-                                            : "hideGitHubAndExternalWrap"
-                                    }
+                                <a
+                                    href={disco.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                 >
-                                    <a
-                                        href={disco.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <AiFillGithub className="githubAndExternalIcon" />
-                                    </a>
-                                    <a
-                                        href={disco.demo}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <FiExternalLink className="githubAndExternalIcon" />
-                                    </a>
-                                </div>
-                            )}
-
-                            {disco.githubAPI && (
-                                <div
-                                    className={
-                                        width > MD_SCREEN_SIZE
-                                            ? "showGitHubAndExternalWrap"
-                                            : "hideGitHubAndExternalWrap"
-                                    }
+                                    <AiFillGithub className="githubAndExternalIcon" />
+                                </a>
+                                <a
+                                    href={disco.demo}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                 >
-                                    <h2>App:</h2>
-                                    <a
-                                        href={disco.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <AiFillGithub className="githubAndExternalIcon" />
-                                    </a>
-                                    <h2>API: </h2>
-                                    <a
-                                        href={disco.githubAPI}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <AiFillGithub className="githubAndExternalIcon" />
-                                    </a>
-                                </div>
-                            )}
-                        </div>
+                                    <FiExternalLink className="githubAndExternalIcon" />
+                                </a>
+                            </div>
+                        )}
+                        {disco.githubAPI && (
+                            <div
+                                className={
+                                    width < MD_SCREEN_SIZE
+                                        ? "showGitHubAndExternalWrap"
+                                        : "hideGitHubAndExternalWrap"
+                                }
+                            >
+                                <h2>App:</h2>
+                                <a
+                                    href={disco.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <AiFillGithub className="githubAndExternalIcon" />
+                                </a>
+                                <h2>API: </h2>
+                                <a
+                                    href={disco.githubAPI}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <AiFillGithub className="githubAndExternalIcon" />
+                                </a>
+                            </div>
+                        )}
                     </div>
-                    <p
-                        className={
-                            width < MD_SCREEN_SIZE
-                                ? "showDiscoDesc"
-                                : "hideDiscoDesc"
-                        }
-                    >
-                        {disco.description}
-                    </p>
-                    {!disco.githubAPI && (
-                        <div
-                            className={
-                                width < MD_SCREEN_SIZE
-                                    ? "showGitHubAndExternalWrap"
-                                    : "hideGitHubAndExternalWrap"
-                            }
-                        >
-                            <a
-                                href={disco.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <AiFillGithub className="githubAndExternalIcon" />
-                            </a>
-                            <a
-                                href={disco.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <FiExternalLink className="githubAndExternalIcon" />
-                            </a>
-                        </div>
-                    )}
-                    {disco.githubAPI && (
-                        <div
-                            className={
-                                width < MD_SCREEN_SIZE
-                                    ? "showGitHubAndExternalWrap"
-                                    : "hideGitHubAndExternalWrap"
-                            }
-                        >
-                            <h2>App:</h2>
-                            <a
-                                href={disco.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <AiFillGithub className="githubAndExternalIcon" />
-                            </a>
-                            <h2>API: </h2>
-                            <a
-                                href={disco.githubAPI}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <AiFillGithub className="githubAndExternalIcon" />
-                            </a>
-                        </div>
-                    )}
-                </div>
+                </LazyLoad>
             );
         });
     };
@@ -468,11 +494,6 @@ const ArtistInfo: React.FC<{}> = (props) => {
                     <h2 className="popularSongsSectionTitle">Popular Songs</h2>
                     {renderSongs()}
 
-                    {/* {!isSongsImageLoaded && (
-                        <FadeIn>
-                            <SongsPlaceholder />
-                        </FadeIn>
-                    )} */}
                     <div
                         className="songsListWrap"
                         style={
