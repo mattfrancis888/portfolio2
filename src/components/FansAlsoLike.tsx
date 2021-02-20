@@ -70,11 +70,7 @@ const FansALsoLike: React.FC<{}> = () => {
         });
     };
 
-    return (
-        <React.Fragment>
-            <div className="fansAlsoLikeArtistsWrap">{renderArtists()}</div>
-        </React.Fragment>
-    );
+    return <div className="fansAlsoLikeArtistsWrap">{renderArtists()}</div>;
 };
 
 export default FansALsoLike;

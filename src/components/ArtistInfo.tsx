@@ -41,7 +41,8 @@ import {
     SM_SCREEN_SIZE,
     MD_SCREEN_SIZE,
 } from "../constants";
-import FansALsoLike from "./FansAlsoLike";
+import FansAlsoLike from "./FansAlsoLike";
+import About from "./About";
 const discoData = [
     {
         title: ` Multi-Docker`,
@@ -489,8 +490,8 @@ const ArtistInfo: React.FC<{}> = (props) => {
             {renderHeader()}
             <div className="artistContainer">
                 {renderBannerAndName()}
-                <div className="popularSongsAndDiscoWrap">
-                    <h2 className="popularSongsSectionTitle">Popular Songs</h2>
+                <div className="artistInfoSectionWrap">
+                    <h2 className="artistInfoSectionTitle">Popular Songs</h2>
                     {renderSongs()}
 
                     <div
@@ -505,7 +506,7 @@ const ArtistInfo: React.FC<{}> = (props) => {
                         }}
                     ></div>
                 </div>
-                <div className="popularSongsAndDiscoWrap">
+                <div className="artistInfoSectionWrap">
                     <h2 className="discoSectionTitle">Discography</h2>
                     <div className={showMore ? "" : "discoListWrap"}>
                         {renderDisco()}
@@ -521,9 +522,14 @@ const ArtistInfo: React.FC<{}> = (props) => {
                     </button>
                 </div>
 
-                <div className="popularSongsAndDiscoWrap">
-                    <h2 className="popularSongsSectionTitle">Fans Also Like</h2>
-                    <FansALsoLike />
+                <div className="artistInfoSectionWrap">
+                    <h2 className="artistInfoSectionTitle">Fans Also Like</h2>
+                    <FansAlsoLike />
+                </div>
+
+                <div className="artistInfoSectionWrap">
+                    <h2 className="artistInfoSectionTitle">About</h2>
+                    <About />
                 </div>
             </div>
         </React.Fragment>
