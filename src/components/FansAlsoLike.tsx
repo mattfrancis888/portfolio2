@@ -44,12 +44,15 @@ const artistData = [
         link: "https://open.spotify.com/artist/6l3HvQ5sa6mXTsMTB19rO5",
     },
 ];
-const FansALsoLike: React.FC<{}> = () => {
+const FansAlsoLike: React.FC<{}> = () => {
     const { width } = useWindowDimensions();
     const renderArtists = (): JSX.Element | JSX.Element[] => {
         return artistData.map((artist, index) => {
             return (
-                <div key={index} className="fansAlsoLikeArtistContainer">
+                <div
+                    key={index}
+                    className="fansAlsoLikeArtistAndAppearsOnContainer"
+                >
                     <a
                         href={artist.link}
                         target="_blank"
@@ -73,4 +76,4 @@ const FansALsoLike: React.FC<{}> = () => {
     return <div className="fansAlsoLikeArtistsWrap">{renderArtists()}</div>;
 };
 
-export default FansALsoLike;
+export default FansAlsoLike;

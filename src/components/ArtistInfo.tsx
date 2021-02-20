@@ -43,6 +43,7 @@ import {
 } from "../constants";
 import FansAlsoLike from "./FansAlsoLike";
 import About from "./About";
+import AppearsOn from "./AppearsOn";
 const discoData = [
     {
         title: ` Multi-Docker`,
@@ -525,6 +526,10 @@ const ArtistInfo: React.FC<{}> = (props) => {
                 <div className="artistInfoSectionWrap">
                     <h2 className="artistInfoSectionTitle">Fans Also Like</h2>
                     <FansAlsoLike />
+                </div>
+                <div className="artistInfoSectionWrap">
+                    <h2 className="artistInfoSectionTitle">Appears On</h2>
+                    <AppearsOn />
                 </div>
 
                 <div className="artistInfoSectionWrap">
