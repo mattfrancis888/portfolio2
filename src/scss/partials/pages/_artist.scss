@@ -45,7 +45,7 @@
 
 .fullNameAndMonthlyListenerWrap {
     position: absolute;
-    left: 2rem;
+    left: 3rem;
     bottom: 3.5rem;
     .artistFullName {
         font-size: 5rem;
@@ -74,10 +74,75 @@
     }
 }
 
+.artistInfoAndArtistPickSectionWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .artistInfoSectionWrap {
     padding: 3rem 5rem;
     @media screen and (min-width: $md_breakpoint) {
         padding: 3rem 10rem !important;
+    }
+}
+.artistPickInfoWrap {
+    display: flex;
+}
+.artistPopularSongsContainer {
+    width: 100%;
+    @media screen and (min-width: $md_breakpoint) {
+        width: 58%;
+    }
+    @media screen and (min-width: $lg_breakpoint) {
+        width: 66%;
+    }
+    @media screen and (min-width: $xl_breakpoint) {
+        width: 68%;
+    }
+}
+.artistPickContainer {
+    width: 0%;
+    display: none;
+    @media screen and (min-width: $md_breakpoint) {
+        display: block;
+        width: 35%;
+    }
+    @media screen and (min-width: $lg_breakpoint) {
+        display: block;
+        width: 28%;
+    }
+
+    img {
+        width: 7.5rem;
+        height: 7.5rem;
+    }
+    .artistPickTextWrap {
+        padding: 0 0 0 1rem;
+        p {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 0.5rem 0 0 0;
+            color: $spotify-grey;
+            @media screen and (min-width: $md_breakpoint) {
+                font-size: 1.3rem;
+                margin: 0.5rem 0 0 0;
+            }
+        }
+        h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            line-height: 1.6rem;
+            font-weight: 600;
+            @media screen and (min-width: $lg_breakpoint) {
+                font-size: 1.3rem;
+                line-height: 2rem;
+            }
+            @media screen and (min-width: $xl_breakpoint) {
+                font-size: 1.4rem;
+                line-height: 2rem;
+            }
+        }
     }
 }
 
@@ -136,7 +201,8 @@
         @media screen and (min-width: $sm_breakpoint) {
             font-size: 1.4rem;
         }
-        @media screen and (min-width: $md_breakpoint) {
+
+        @media screen and (min-width: $lg_breakpoint) {
             font-size: 1.6rem;
         }
     }
@@ -151,11 +217,17 @@
         font-size: 2.5rem;
     }
 }
+.musicalnoteIcon {
+    font-size: 1.4rem;
+}
 
 .songLength {
     font-size: 1.2rem;
     color: $spotify-grey;
     @media screen and (min-width: $md_breakpoint) {
+        font-size: 1.4rem;
+    }
+    @media screen and (min-width: $lg_breakpoint) {
         font-size: 1.6rem;
     }
 }

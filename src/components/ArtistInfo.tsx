@@ -35,6 +35,7 @@ import uoLg from "../img/uo_lg.jpg";
 import giphy from "../img/giphy.png";
 import giphyLg from "../img/giphy_lg.gif";
 import airbnbLg from "../img/airbnb_lg.png";
+import growingUp from "../img/growingUp.jpg";
 import {
     XS_SCREEN_SIZE,
     LG_SCREEN_SIZE,
@@ -231,7 +232,6 @@ const ArtistInfo: React.FC<{}> = () => {
     const [popularSong1Clicked, setPopularSong1Clicked] = useState(false);
     const [popularSong2Clicked, setPopularSong2Clicked] = useState(false);
     const [popularSong3Clicked, setPopularSong3Clicked] = useState(false);
-    console.log(popularSong3);
 
     useEffect(() => {
         if (popularSong1 !== null && popularSong1Clicked) {
@@ -291,7 +291,7 @@ const ArtistInfo: React.FC<{}> = () => {
                     }}
                 >
                     <div className="songIconAndTitleWrap">
-                        <FaPlay className="playAndMusicalNoteicon" />
+                        <FaPlay className="playAndMusicalNoteicon musicalnoteIcon" />
                         <IoMdMusicalNotes className="playAndMusicalNoteicon" />
                         <h1>Kijiji</h1>
                     </div>
@@ -305,7 +305,7 @@ const ArtistInfo: React.FC<{}> = () => {
                     }}
                 >
                     <div className="songIconAndTitleWrap">
-                        <FaPlay className="playAndMusicalNoteicon" />
+                        <FaPlay className="playAndMusicalNoteicon musicalnoteIcon" />
                         <IoMdMusicalNotes className="playAndMusicalNoteicon" />
                         <h1>Dreamworks</h1>
                     </div>
@@ -319,7 +319,7 @@ const ArtistInfo: React.FC<{}> = () => {
                     }}
                 >
                     <div className="songIconAndTitleWrap">
-                        <FaPlay className="playAndMusicalNoteicon" />
+                        <FaPlay className="playAndMusicalNoteicon musicalnoteIcon" />
                         <IoMdMusicalNotes className="playAndMusicalNoteicon" />
                         <h1>Pixar</h1>
                     </div>
@@ -517,12 +517,30 @@ const ArtistInfo: React.FC<{}> = () => {
             {renderHeader()}
             <div className="artistContainer">
                 {renderBannerAndName()}
-                <div className="artistInfoSectionWrap">
-                    <h2 className="artistInfoSectionTitle">Popular Songs</h2>
-                    {renderSongs()}
-
-                    <div className="songsListWrap"></div>
+                <div className="artistInfoAndArtistPickSectionWrap artistInfoSectionWrap">
+                    <div className="artistPopularSongsContainer">
+                        <h2 className="artistInfoSectionTitle">
+                            Popular Songs
+                        </h2>
+                        {renderSongs()}
+                    </div>
+                    <div className="artistPickContainer">
+                        <h2 className="artistInfoSectionTitle">Artist Pick</h2>
+                        <div className="artistPickInfoWrap">
+                            <img
+                                src={growingUp}
+                                alt="song, playlist or album"
+                            ></img>
+                            <div className="artistPickTextWrap">
+                                <h3 className="artistPickTitle">
+                                    Growing Up (feat. Ed Sheeran)
+                                </h3>
+                                <p>Song</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div className="artistInfoSectionWrap">
                     <h2 className="artistInfoSectionTitle">Discography</h2>
                     <div className=" artistInfoDiscoWrap">

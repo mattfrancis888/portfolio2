@@ -652,7 +652,7 @@ nav {
 
 .fullNameAndMonthlyListenerWrap {
   position: absolute;
-  left: 2rem;
+  left: 3rem;
   bottom: 3.5rem;
 }
 .fullNameAndMonthlyListenerWrap .artistFullName {
@@ -686,12 +686,95 @@ nav {
   }
 }
 
+.artistInfoAndArtistPickSectionWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .artistInfoSectionWrap {
   padding: 3rem 5rem;
 }
 @media screen and (min-width: 768px) {
   .artistInfoSectionWrap {
     padding: 3rem 10rem !important;
+  }
+}
+
+.artistPickInfoWrap {
+  display: flex;
+}
+
+.artistPopularSongsContainer {
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .artistPopularSongsContainer {
+    width: 58%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .artistPopularSongsContainer {
+    width: 66%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .artistPopularSongsContainer {
+    width: 68%;
+  }
+}
+
+.artistPickContainer {
+  width: 0%;
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .artistPickContainer {
+    display: block;
+    width: 35%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .artistPickContainer {
+    display: block;
+    width: 28%;
+  }
+}
+.artistPickContainer img {
+  width: 7.5rem;
+  height: 7.5rem;
+}
+.artistPickContainer .artistPickTextWrap {
+  padding: 0 0 0 1rem;
+}
+.artistPickContainer .artistPickTextWrap p {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0 0;
+  color: #b3b3b3;
+}
+@media screen and (min-width: 768px) {
+  .artistPickContainer .artistPickTextWrap p {
+    font-size: 1.3rem;
+    margin: 0.5rem 0 0 0;
+  }
+}
+.artistPickContainer .artistPickTextWrap h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  font-weight: 600;
+}
+@media screen and (min-width: 992px) {
+  .artistPickContainer .artistPickTextWrap h3 {
+    font-size: 1.3rem;
+    line-height: 2rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .artistPickContainer .artistPickTextWrap h3 {
+    font-size: 1.4rem;
+    line-height: 2rem;
   }
 }
 
@@ -759,7 +842,7 @@ nav {
     font-size: 1.4rem;
   }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
   .songIconAndTitleWrap h1 {
     font-size: 1.6rem;
   }
@@ -777,11 +860,20 @@ nav {
   }
 }
 
+.musicalnoteIcon {
+  font-size: 1.4rem;
+}
+
 .songLength {
   font-size: 1.2rem;
   color: #b3b3b3;
 }
 @media screen and (min-width: 768px) {
+  .songLength {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (min-width: 992px) {
   .songLength {
     font-size: 1.6rem;
   }
