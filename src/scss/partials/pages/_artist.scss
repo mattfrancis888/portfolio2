@@ -77,7 +77,13 @@
 .artistInfoSectionWrap {
     padding: 3rem 5rem;
     @media screen and (min-width: $md_breakpoint) {
-        padding: 3rem 10rem;
+        padding: 3rem 10rem !important;
+    }
+}
+
+.artistInfoSectionDiscoWrap {
+    @media screen and (min-width: $sm_breakpoint) {
+        padding: 3rem 8rem;
     }
 }
 
@@ -121,6 +127,9 @@
         font-size: 1.2rem;
         font-weight: 600;
         letter-spacing: 0.015rem;
+        @media screen and (min-width: $sm_breakpoint) {
+            font-size: 1.4rem;
+        }
         @media screen and (min-width: $md_breakpoint) {
             font-size: 1.6rem;
         }
@@ -178,10 +187,16 @@ discoPicture {
     }
     .discoStack {
         text-align: left;
-        font-size: 1.6rem;
+        font-size: 1rem;
         font-weight: 800;
-        line-height: 2.3rem;
         margin: 0;
+
+        @media screen and (min-width: $sm_breakpoint) {
+            font-size: 1.4rem;
+        }
+        @media screen and (min-width: $md_breakpoint) {
+            font-size: 1.6rem;
+        }
 
         @media screen and (min-width: $xl_breakpoint) {
             font-size: 2rem;
@@ -253,21 +268,28 @@ discoPicture {
 .showDiscoDesc {
     display: block;
     margin-top: 1rem;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
     font-weight: 400;
-    line-height: 1.95rem;
+
     color: $spotify-grey;
     text-align: left;
 
+    @media screen and (min-width: $sm_breakpoint) {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+    }
     @media screen and (min-width: $md_breakpoint) {
-        margin-top: 2rem;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
     }
-    @media screen and (min-width: $lg_breakpoint) {
-        margin-top: 1rem;
-    }
+    // @media screen and (min-width: $lg_breakpoint) {
+    //     font-size: 1.6rem;
+    //     line-height: 2.2rem;
+    // }
     @media screen and (min-width: $xl_breakpoint) {
         font-size: 1.6rem;
-        line-height: 2.3rem;
+        line-height: 2.2rem;
     }
 }
 

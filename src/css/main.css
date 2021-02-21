@@ -558,63 +558,6 @@ body {
   }
 }
 
-.homeContainer {
-  height: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-image: linear-gradient(#2c5e92 0%, #552f6d 80%);
-  padding: 10rem 0;
-  text-align: center;
-  min-width: 40rem;
-}
-
-.titleWrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 5rem;
-}
-
-.spotifyLogo {
-  width: 8rem;
-  height: 8rem;
-}
-@media screen and (min-width: 520px) {
-  .spotifyLogo {
-    width: 10rem;
-    height: 10rem;
-  }
-}
-
-.favoriteArtistTitle {
-  display: inline-block;
-  color: white;
-  font-size: 3rem;
-  margin-bottom: 3rem;
-}
-@media screen and (min-width: 520px) {
-  .favoriteArtistTitle {
-    font-size: 3.8rem;
-  }
-}
-
-.favoriteArtistsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 0 1rem;
-}
-@media screen and (min-width: 992px) {
-  .favoriteArtistsContainer {
-    padding: 0 8rem;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .favoriteArtistsContainer {
-    padding: 0 19rem;
-  }
-}
-
 nav {
   background-color: black;
   position: sticky;
@@ -650,6 +593,7 @@ nav {
 }
 
 .artistNameOnScroll {
+  font-weight: 800;
   margin: 0;
   opacity: 1;
   color: white;
@@ -746,7 +690,13 @@ nav {
 }
 @media screen and (min-width: 768px) {
   .artistInfoSectionWrap {
-    padding: 3rem 10rem;
+    padding: 3rem 10rem !important;
+  }
+}
+
+@media screen and (min-width: 520px) {
+  .artistInfoSectionDiscoWrap {
+    padding: 3rem 8rem;
   }
 }
 
@@ -792,6 +742,11 @@ nav {
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.015rem;
+}
+@media screen and (min-width: 520px) {
+  .songIconAndTitleWrap h1 {
+    font-size: 1.4rem;
+  }
 }
 @media screen and (min-width: 768px) {
   .songIconAndTitleWrap h1 {
@@ -862,10 +817,19 @@ discoPicture {
 }
 .discoOverviewWrap .discoStack {
   text-align: left;
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: 800;
-  line-height: 2.3rem;
   margin: 0;
+}
+@media screen and (min-width: 520px) {
+  .discoOverviewWrap .discoStack {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .discoOverviewWrap .discoStack {
+    font-size: 1.6rem;
+  }
 }
 @media screen and (min-width: 1200px) {
   .discoOverviewWrap .discoStack {
@@ -942,26 +906,28 @@ discoPicture {
 .showDiscoDesc {
   display: block;
   margin-top: 1rem;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
   font-weight: 400;
-  line-height: 1.95rem;
   color: #b3b3b3;
   text-align: left;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 520px) {
   .showDiscoDesc {
-    margin-top: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
   }
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
   .showDiscoDesc {
-    margin-top: 1rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
   }
 }
 @media screen and (min-width: 1200px) {
   .showDiscoDesc {
     font-size: 1.6rem;
-    line-height: 2.3rem;
+    line-height: 2.2rem;
   }
 }
 

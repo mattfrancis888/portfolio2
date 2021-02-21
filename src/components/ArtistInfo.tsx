@@ -497,7 +497,7 @@ const ArtistInfo: React.FC<{}> = (props) => {
 
                     <div className="songsListWrap"></div>
                 </div>
-                <div className="artistInfoSectionWrap">
+                <div className="artistInfoSectionWrap artistInfoSectionDiscoWrap">
                     <h2 className="artistInfoSectionTitle">Discography</h2>
                     <div className={showMore ? "" : "discoListWrap"}>
                         {renderDisco()}
