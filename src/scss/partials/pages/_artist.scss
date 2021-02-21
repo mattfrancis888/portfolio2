@@ -81,9 +81,15 @@
     }
 }
 
-.artistInfoSectionDiscoWrap {
+.artistInfoDiscoWrap {
     @media screen and (min-width: $sm_breakpoint) {
-        padding: 3rem 8rem;
+        padding: 3rem 5rem;
+    }
+    @media screen and (min-width: 650px) {
+        padding: 3rem 10rem;
+    }
+    @media screen and (min-width: $md_breakpoint) {
+        padding: 0;
     }
 }
 
@@ -173,12 +179,18 @@ discoPicture {
 .discoOverviewWrap {
     text-align: center;
     .discoTitle {
-        font-size: 2.3rem;
+        font-size: 1.8rem;
         font-weight: 900;
         letter-spacing: -0.04rem;
-        line-height: 3.6rem;
-        margin: 3rem 0 1rem 0;
+
+        margin: 2rem 0 1rem 0;
+        @media screen and (min-width: $sm_breakpoint) {
+            font-size: 2rem;
+            margin: 3rem 0 1rem 0;
+        }
         @media screen and (min-width: $md_breakpoint) {
+            font-size: 2.3rem;
+            line-height: 3.6rem;
             margin: 0 0 1rem 0;
         }
         @media screen and (min-width: $lg_breakpoint) {
@@ -210,8 +222,6 @@ discoPicture {
 }
 
 .discoImageContainer {
-    height: 33rem;
-    // width: 28rem;
     width: 100%;
 
     img {
@@ -219,14 +229,14 @@ discoPicture {
         height: 100%;
         object-fit: cover;
     }
+
     @media screen and (min-width: $md_breakpoint) {
         margin-right: 4rem;
         width: 50%;
     }
     @media screen and (min-width: $lg_breakpoint) {
         margin-right: 6rem;
-        // height: 34rem;
-        // width: 65rem;
+        height: 33rem;
     }
 }
 
