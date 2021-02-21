@@ -218,30 +218,38 @@ const discoData = [
     },
 ];
 
-const ArtistInfo: React.FC<{}> = (props) => {
+const ArtistInfo: React.FC<{}> = () => {
     const [showMore, setShowMore] = useState(false);
 
     const [isBannerImageLoaded, setIsBannerImageLoaded] = useState(false);
     const { width } = useWindowDimensions();
 
-    const popularSong1 = useRef(null);
-    const popularSong2 = useRef(null);
-    const popularSong3 = useRef(null);
-    const executeScroll1 = () => {
-        //@ts-ignore
-        popularSong1.current.scrollIntoView({ behavior: "smooth" });
-        setShowMore(true);
-    };
-    const executeScroll2 = () => {
-        //@ts-ignore
-        popularSong2.current.scrollIntoView({ behavior: "smooth" });
-        setShowMore(true);
-    };
-    const executeScroll3 = () => {
-        //@ts-ignore
-        popularSong3.current.scrollIntoView({ behavior: "smooth" });
-        setShowMore(true);
-    };
+    const popularSong1 = useRef<HTMLLinkElement>(null);
+    const popularSong2 = useRef<HTMLLinkElement>(null);
+    const popularSong3 = useRef<HTMLLinkElement>(null);
+
+    const [popularSong1Clicked, setPopularSong1Clicked] = useState(false);
+    const [popularSong2Clicked, setPopularSong2Clicked] = useState(false);
+    const [popularSong3Clicked, setPopularSong3Clicked] = useState(false);
+    console.log(popularSong3);
+
+    useEffect(() => {
+        if (popularSong1 !== null && popularSong1Clicked) {
+            popularSong1.current?.scrollIntoView({ behavior: "smooth" });
+            setPopularSong1Clicked(false);
+        }
+
+        if (popularSong2 !== null && popularSong2Clicked) {
+            popularSong2.current?.scrollIntoView({ behavior: "smooth" });
+            setPopularSong2Clicked(false);
+        }
+
+        if (popularSong3 !== null && popularSong3Clicked) {
+            popularSong3.current?.scrollIntoView({ behavior: "smooth" });
+            setPopularSong3Clicked(false);
+        }
+    }, [popularSong1Clicked, popularSong2Clicked, popularSong3Clicked]);
+
     const renderHeader = (): JSX.Element => {
         return <Header artistName="Matthew Francis" />;
     };
@@ -275,7 +283,13 @@ const ArtistInfo: React.FC<{}> = (props) => {
     const renderSongs = (): JSX.Element | JSX.Element[] => {
         return (
             <React.Fragment>
-                <div className="song" onClick={executeScroll1}>
+                <div
+                    className="song"
+                    onClick={() => {
+                        setPopularSong1Clicked(true);
+                        setShowMore(true);
+                    }}
+                >
                     <div className="songIconAndTitleWrap">
                         <FaPlay className="playAndMusicalNoteicon" />
                         <IoMdMusicalNotes className="playAndMusicalNoteicon" />
@@ -283,7 +297,13 @@ const ArtistInfo: React.FC<{}> = (props) => {
                     </div>
                     <p className="songLength">2:01</p>
                 </div>
-                <div className="song" onClick={executeScroll2}>
+                <div
+                    className="song"
+                    onClick={() => {
+                        setPopularSong2Clicked(true);
+                        setShowMore(true);
+                    }}
+                >
                     <div className="songIconAndTitleWrap">
                         <FaPlay className="playAndMusicalNoteicon" />
                         <IoMdMusicalNotes className="playAndMusicalNoteicon" />
@@ -291,7 +311,13 @@ const ArtistInfo: React.FC<{}> = (props) => {
                     </div>
                     <p className="songLength">3:30</p>
                 </div>
-                <div className="song" onClick={executeScroll3}>
+                <div
+                    className="song"
+                    onClick={() => {
+                        setPopularSong3Clicked(true);
+                        setShowMore(true);
+                    }}
+                >
                     <div className="songIconAndTitleWrap">
                         <FaPlay className="playAndMusicalNoteicon" />
                         <IoMdMusicalNotes className="playAndMusicalNoteicon" />
