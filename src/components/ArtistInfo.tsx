@@ -336,22 +336,22 @@ const ArtistInfo: React.FC<{}> = () => {
             return (
                 <div
                     key={index}
-                    className={`discoContainer discoContainer${index}`}
-                    onLoad={() => {
-                        anime({
-                            targets: `.discoContainer${index}`,
-                            // Properties
-                            // Animation Parameters
+                    className={`discoContainer`}
+                    // onLoad={() => {
+                    //     anime({
+                    //         targets: `.discoContainer${index}`,
+                    //         // Properties
+                    //         // Animation Parameters
 
-                            opacity: [
-                                {
-                                    value: [0, 1],
-                                    duration: 1000,
-                                    easing: "easeOutQuad",
-                                },
-                            ],
-                        });
-                    }}
+                    //         opacity: [
+                    //             {
+                    //                 value: [0, 1],
+                    //                 duration: 1000,
+                    //                 easing: "easeOutQuad",
+                    //             },
+                    //         ],
+                    //     });
+                    // }}
                 >
                     {disco.title === "Kijiji" && (
                         <span
@@ -372,7 +372,24 @@ const ArtistInfo: React.FC<{}> = () => {
                         ></span>
                     )}
                     <div className="discoImageAndOverviewWrap">
-                        <div className="discoImageContainer">
+                        <div
+                            className={`discoImageContainer discoImageContainer${index}`}
+                            onLoad={() => {
+                                anime({
+                                    targets: `.discoImageContainer${index}`,
+                                    // Properties
+                                    // Animation Parameters
+
+                                    opacity: [
+                                        {
+                                            value: [0, 1],
+                                            duration: 250,
+                                            easing: "easeOutQuad",
+                                        },
+                                    ],
+                                });
+                            }}
+                        >
                             <picture className={` discoPicture`}>
                                 <source
                                     media={`(min-width:${LG_SCREEN_SIZE}px)`}

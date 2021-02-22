@@ -1008,7 +1008,6 @@ nav {
 
 .discoContainer,
 discoPicture {
-  opacity: 0;
   position: relative;
 }
 
@@ -1084,6 +1083,7 @@ discoPicture {
 
 .discoImageContainer {
   width: 100%;
+  opacity: 0;
 }
 .discoImageContainer img {
   width: 100%;

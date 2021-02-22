@@ -335,7 +335,7 @@
 
 .discoContainer,
 discoPicture {
-    opacity: 0;
+    // opacity: 0;
     position: relative;
 }
 
@@ -397,7 +397,7 @@ discoPicture {
 
 .discoImageContainer {
     width: 100%;
-
+    opacity: 0;
     img {
         width: 100%;
         height: 100%;
