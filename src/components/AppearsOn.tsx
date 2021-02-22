@@ -55,7 +55,24 @@ const AppearsOn: React.FC<{}> = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <div className="playlistImg">
+                        <div
+                            className={`playlistImg playlistImg${index}`}
+                            // onLoad={() => {
+                            //     anime({
+                            //         targets: `.playlistImg${index}`,
+                            //         // Properties
+                            //         // Animation Parameters
+
+                            //         opacity: [
+                            //             {
+                            //                 value: [0, 1],
+                            //                 duration: 250,
+                            //                 easing: "easeOutQuad",
+                            //             },
+                            //         ],
+                            //     });
+                            // }}
+                        >
                             <img src={playlist.playlistImg} alt="artist" />
                         </div>
                         <h1>{playlist.name}</h1>

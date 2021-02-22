@@ -46,6 +46,7 @@ import {
 import FansAlsoLike from "./FansAlsoLike";
 import About from "./About";
 import AppearsOn from "./AppearsOn";
+import SquarePlaceholder from "./SquarePlaceholder";
 const discoData = [
     {
         title: ` Multi-Docker`,
@@ -372,36 +373,56 @@ const ArtistInfo: React.FC<{}> = () => {
                         ></span>
                     )}
                     <div className="discoImageAndOverviewWrap">
-                        <div
-                            className={`discoImageContainer discoImageContainer${index}`}
-                            onLoad={() => {
-                                anime({
-                                    targets: `.discoImageContainer${index}`,
-                                    // Properties
-                                    // Animation Parameters
+                        <div className={`discoImageContainer`}>
+                            <div
+                                className={`discoImageAnimeWrap discoImageAnimeWrap${index}`}
+                                onLoad={() => {
+                                    anime({
+                                        targets: `.squarePlaceholder${index}`,
+                                        width: `0`,
+                                        height: `0`,
+                                        duration: 250,
+                                    });
+                                    anime({
+                                        targets: `.discoImageAnimeWrap${index}`,
+                                        // Properties
+                                        // Animation Parameters
 
-                                    opacity: [
-                                        {
-                                            value: [0, 1],
-                                            duration: 250,
-                                            easing: "easeOutQuad",
-                                        },
-                                    ],
-                                });
-                            }}
-                        >
-                            <picture className={` discoPicture`}>
-                                <source
-                                    media={`(min-width:${LG_SCREEN_SIZE}px)`}
-                                    srcSet={disco.imgLg}
+                                        opacity: [
+                                            {
+                                                value: [0, 1],
+                                                duration: 250,
+                                                easing: "easeOutQuad",
+                                            },
+                                        ],
+                                        width: `100%`,
+                                        height: `100%`,
+                                    });
+                                }}
+                            >
+                                <picture
+                                    className={`discoPicture discoPicture${index}`}
+                                >
+                                    <source
+                                        media={`(min-width:${LG_SCREEN_SIZE}px)`}
+                                        srcSet={disco.imgLg}
+                                    />
+                                    <source
+                                        media={`(min-width:${XS_SCREEN_SIZE}px)`}
+                                        srcSet={disco.img}
+                                    />
+                                    <img src={disco.imgLg} alt="project" />
+                                </picture>
+                            </div>
+                            <div
+                                className={`squarePlaceholder squarePlaceholder${index}`}
+                            >
+                                <SquarePlaceholder
+                                    className={`squarePlaceholder squarePlaceholder${index}`}
                                 />
-                                <source
-                                    media={`(min-width:${XS_SCREEN_SIZE}px)`}
-                                    srcSet={disco.img}
-                                />
-                                <img src={disco.imgLg} alt="project" />
-                            </picture>
+                            </div>
                         </div>
+
                         <div className="discoOverviewWrap">
                             <h2 className="discoTitle">{disco.title}</h2>
                             <h2 className="discoStack">{disco.stack}</h2>

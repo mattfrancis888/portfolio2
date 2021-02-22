@@ -55,7 +55,24 @@ const FansAlsoLike: React.FC<{}> = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <div className="artistCircle">
+                        <div
+                            className={`artistCircle artistCircle${index}`}
+                            onLoad={() => {
+                                anime({
+                                    targets: `.artistCircle${index}`,
+                                    // Properties
+                                    // Animation Parameters
+
+                                    opacity: [
+                                        {
+                                            value: [0, 1],
+                                            duration: 250,
+                                            easing: "easeOutQuad",
+                                        },
+                                    ],
+                                });
+                            }}
+                        >
                             <img src={artist.profileImg} alt="artist" />
                         </div>
                         <h1>
