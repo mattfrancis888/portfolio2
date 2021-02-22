@@ -36,7 +36,7 @@ import giphy from "../img/giphy.png";
 import giphyLg from "../img/giphy_lg.gif";
 import airbnbLg from "../img/airbnb_lg.png";
 import growingUp from "../img/growingUp.jpg";
-import me_lg from "../img/me_lg.jpg";
+import me2 from "../img/me2.jpg";
 import {
     XS_SCREEN_SIZE,
     LG_SCREEN_SIZE,
@@ -263,8 +263,8 @@ const ArtistInfo: React.FC<{}> = () => {
                             ? { opacity: "0" }
                             : { opacity: "1" }
                     }
-                    src="https://i.scdn.co/image/cc14b787191d396685818c6b2f6d53737257cc2e"
-                    // src={me_lg}
+                    // src="https://i.scdn.co/image/cc14b787191d396685818c6b2f6d53737257cc2e"
+                    src={me2}
                     alt="artist's banner"
                     onLoad={() => {
                         setTimeout(() => setIsBannerImageLoaded(true), 1000);

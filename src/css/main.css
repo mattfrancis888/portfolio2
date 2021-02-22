@@ -623,6 +623,16 @@ nav {
   height: 35rem;
   margin-bottom: 2rem;
 }
+@media screen and (min-width: 992px) {
+  .bannerContainer {
+    height: 38rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .bannerContainer {
+    height: 42rem;
+  }
+}
 .bannerContainer .bannerFade {
   position: absolute;
   top: 0;

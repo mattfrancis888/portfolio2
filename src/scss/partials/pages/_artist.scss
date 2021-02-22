@@ -13,7 +13,12 @@
     min-width: 37rem;
     height: 35rem;
     margin-bottom: 2rem;
-
+    @media screen and (min-width: $lg_breakpoint) {
+        height: 38rem;
+    }
+    @media screen and (min-width: $xl_breakpoint) {
+        height: 42rem;
+    }
     .bannerFade {
         position: absolute;
         top: 0;
