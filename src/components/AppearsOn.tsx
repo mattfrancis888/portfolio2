@@ -69,6 +69,14 @@ const AppearsOn: React.FC<{}> = () => {
     return (
         <React.Fragment>
             <div
+                className="loadingCenter"
+                style={
+                    isDoneLoading ? { display: "none" } : { display: "flex" }
+                }
+            >
+                <Loading />
+            </div>
+            <div
                 className="appearsOnWrap"
                 onLoad={() => {
                     anime({
@@ -84,18 +92,10 @@ const AppearsOn: React.FC<{}> = () => {
                             },
                         ],
                     });
-                    setTimeout(() => setIsDoneLoading(true), 250);
+                    setTimeout(() => setIsDoneLoading(true), 0);
                 }}
             >
                 {renderPlaylists()}
-            </div>
-            <div
-                className="loadingCenter"
-                style={
-                    isDoneLoading ? { display: "none" } : { display: "flex" }
-                }
-            >
-                <Loading />
             </div>
         </React.Fragment>
     );

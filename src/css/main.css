@@ -363,6 +363,12 @@ body {
 .loadingCenter {
   display: flex;
   justify-content: center;
+  margin-top: 3rem;
+}
+@media screen and (min-width: 768px) {
+  .loadingCenter {
+    margin-top: 8rem;
+  }
 }
 
 .fansAlsoLikeArtistsWrap {

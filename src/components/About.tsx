@@ -7,6 +7,14 @@ const About: React.FC<{}> = () => {
     return (
         <React.Fragment>
             <div
+                className="loadingCenter"
+                style={
+                    isDoneLoading ? { display: "none" } : { display: "flex" }
+                }
+            >
+                <Loading />
+            </div>
+            <div
                 className="aboutContainer"
                 onLoad={() => {
                     anime({
@@ -22,7 +30,7 @@ const About: React.FC<{}> = () => {
                             },
                         ],
                     });
-                    setTimeout(() => setIsDoneLoading(true), 500);
+                    setTimeout(() => setIsDoneLoading(true), 0);
                 }}
             >
                 <img
@@ -34,16 +42,6 @@ const About: React.FC<{}> = () => {
                 <div className="artistAboutTextWrap">
                     <h1> 50,981,396 monthly listeners</h1>
                     <p>Matthew Francis. Computer Science Student.</p>
-                </div>
-                <div
-                    className="loadingCenter"
-                    style={
-                        isDoneLoading
-                            ? { display: "none" }
-                            : { display: "flex" }
-                    }
-                >
-                    <Loading />
                 </div>
             </div>
         </React.Fragment>

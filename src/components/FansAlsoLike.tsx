@@ -73,6 +73,14 @@ const FansAlsoLike: React.FC<{}> = () => {
     return (
         <React.Fragment>
             <div
+                className="loadingCenter"
+                style={
+                    isDoneLoading ? { display: "none" } : { display: "flex" }
+                }
+            >
+                <Loading />
+            </div>
+            <div
                 className="fansAlsoLikeArtistsWrap"
                 onLoad={() => {
                     anime({
@@ -88,18 +96,10 @@ const FansAlsoLike: React.FC<{}> = () => {
                             },
                         ],
                     });
-                    setTimeout(() => setIsDoneLoading(true), 250);
+                    setTimeout(() => setIsDoneLoading(true), 0);
                 }}
             >
                 {renderArtists()}
-            </div>
-            <div
-                className="loadingCenter"
-                style={
-                    isDoneLoading ? { display: "none" } : { display: "flex" }
-                }
-            >
-                <Loading />
             </div>
         </React.Fragment>
     );
