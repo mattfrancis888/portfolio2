@@ -223,6 +223,7 @@ const discoData = [
 const ArtistInfo: React.FC<{}> = () => {
     const [showMore, setShowMore] = useState(false);
 
+    const [showContactDetails, setShowContactDetails] = useState(false);
     const [isBannerImageLoaded, setIsBannerImageLoaded] = useState(false);
     const { width } = useWindowDimensions();
 
@@ -518,6 +519,39 @@ const ArtistInfo: React.FC<{}> = () => {
             {renderHeader()}
             <div className="artistContainer">
                 {renderBannerAndName()}
+                <div className="contactButtonWrap">
+                    <button
+                        className={
+                            showContactDetails
+                                ? "hideContactButton"
+                                : "contactButton"
+                        }
+                        onClick={() => {
+                            setShowContactDetails(true);
+                        }}
+                    >
+                        Contact
+                    </button>
+                    <div
+                        className={
+                            showContactDetails
+                                ? "contactTextWrap"
+                                : "hideContactTextWrap"
+                        }
+                    >
+                        <a
+                            className="mailto"
+                            href="mailto:mattfrancis888@gmail.com"
+                        >
+                            <h3 className="contactEmail">
+                                Email: mattfrancis888@gmail.com
+                            </h3>
+                        </a>
+
+                        <h3 className="contactPhone">Phone: 289-772-7465</h3>
+                    </div>
+                </div>
+
                 <div className="artistInfoAndArtistPickSectionWrap artistInfoSectionWrap">
                     <div className="artistPopularSongsContainer">
                         <h2 className="artistInfoSectionTitle">

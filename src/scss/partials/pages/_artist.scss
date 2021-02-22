@@ -48,6 +48,88 @@
     }
 }
 
+.contactButtonWrap {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0 0 3rem;
+    // @media screen and (min-width: $md_breakpoint) {
+    //     padding: 1rem 0 0 6rem;
+    // }
+    @media screen and (min-width: $lg_breakpoint) {
+        padding: 2rem 0 0 3rem;
+    }
+}
+.contactButton {
+    font-size: 1rem;
+    cursor: pointer;
+    letter-spacing: 0.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    background-color: transparent;
+    padding: 0.6rem 2rem;
+    border: 2px solid $spotify-grey;
+    border-radius: 2rem;
+    background-color: $spotify-black;
+    outline: none !important;
+    box-shadow: none !important;
+    @media screen and (min-width: $sm_breakpoint) {
+        font-size: 1.2rem;
+        padding: 0.7rem 3rem;
+    }
+    @media screen and (min-width: $md_breakpoint) {
+        font-size: 1.3rem;
+        letter-spacing: 0.2rem;
+        padding: 0.7rem 5rem;
+    }
+
+    @media screen and (min-width: $lg_breakpoint) {
+        font-size: 1.4rem;
+        padding: 0.8rem 7rem;
+    }
+    &:hover {
+        transform: scale(1.1, 1.1);
+        border: 2px solid white;
+        transition: all 0.1s ease;
+    }
+}
+
+.contactTextWrap {
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    transition: all 0.3s ease;
+    .contactEmail,
+    .contactPhone {
+        margin: 0 1rem 0.5rem 0;
+        font-size: 1.2rem;
+        @media screen and (min-width: $sm_breakpoint) {
+            font-size: 1.4rem;
+            margin: 0 1rem 0.7rem 0;
+        }
+        @media screen and (min-width: $lg_breakpoint) {
+            margin: 0 1rem 1rem 0;
+            font-size: 1.6rem;
+        }
+    }
+    .contactEmail {
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}
+.hideContactButton {
+    display: none;
+}
+.hideContactTextWrap {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
 .fullNameAndMonthlyListenerWrap {
     position: absolute;
     left: 3rem;
@@ -86,7 +168,10 @@
 }
 
 .artistInfoSectionWrap {
-    padding: 3rem 5rem;
+    padding: 0.5rem 5rem;
+    @media screen and (min-width: $sm_breakpoint) {
+        padding: 3rem 5rem;
+    }
     @media screen and (min-width: $md_breakpoint) {
         padding: 3rem 10rem !important;
     }
@@ -361,7 +446,13 @@ discoPicture {
     }
 }
 .discoContainer {
-    margin-bottom: 10rem;
+    margin-bottom: 6rem;
+    @media screen and (min-width: $sm_breakpoint) {
+        margin-bottom: 7rem;
+    }
+    @media screen and (min-width: $md_breakpoint) {
+        margin-bottom: 10rem;
+    }
 }
 
 .showDiscoDesc {
