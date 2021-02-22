@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import anime from "animejs/lib/anime.es.js";
 import Loading from "./Loading";
+import me_lg from "../img/me_lg.jpg";
 const About: React.FC<{}> = () => {
     const [isDoneLoading, setIsDoneLoading] = useState(false);
     return (
@@ -25,7 +26,8 @@ const About: React.FC<{}> = () => {
                 }}
             >
                 <img
-                    src="https://i.scdn.co/image/3a2c1be77c4bc7b915ae55b0dcb6edb3d488eebf"
+                    // src="https://i.scdn.co/image/3a2c1be77c4bc7b915ae55b0dcb6edb3d488eebf"
+                    src={me_lg}
                     alt="artist"
                 />
                 <div className="aboutFade"></div>

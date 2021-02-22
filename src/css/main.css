@@ -703,6 +703,17 @@ nav {
 
 .artistPickInfoWrap {
   display: flex;
+  padding: 1rem;
+}
+.artistPickInfoWrap:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+@media screen and (min-width: 1200px) {
+  .artistPickInfoWrap {
+    padding: 1.5rem;
+  }
 }
 
 .artistPopularSongsContainer {
@@ -759,20 +770,21 @@ nav {
     margin: 0.5rem 0 0 0;
   }
 }
-.artistPickContainer .artistPickTextWrap h3 {
-  margin: 0;
+
+.artistPickTitle {
+  margin: 0 0 1rem 0;
   font-size: 1.2rem;
   line-height: 1.6rem;
   font-weight: 600;
 }
 @media screen and (min-width: 992px) {
-  .artistPickContainer .artistPickTextWrap h3 {
+  .artistPickTitle {
     font-size: 1.3rem;
     line-height: 2rem;
   }
 }
 @media screen and (min-width: 1200px) {
-  .artistPickContainer .artistPickTextWrap h3 {
+  .artistPickTitle {
     font-size: 1.4rem;
     line-height: 2rem;
   }
@@ -1075,7 +1087,12 @@ discoPicture {
 .invisibleSpan {
   display: invisible;
   position: absolute;
-  top: -10rem;
+  top: 0;
+}
+@media screen and (min-width: 768px) {
+  .invisibleSpan {
+    top: -10rem;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

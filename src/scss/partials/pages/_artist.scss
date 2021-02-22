@@ -88,6 +88,16 @@
 }
 .artistPickInfoWrap {
     display: flex;
+
+    padding: 1rem;
+    &:hover {
+        cursor: pointer;
+        background-color: hsla(0, 0%, 100%, 0.1);
+        transition: all 0.3s ease;
+    }
+    @media screen and (min-width: $xl_breakpoint) {
+        padding: 1.5rem;
+    }
 }
 .artistPopularSongsContainer {
     width: 100%;
@@ -129,20 +139,21 @@
                 margin: 0.5rem 0 0 0;
             }
         }
-        h3 {
-            margin: 0;
-            font-size: 1.2rem;
-            line-height: 1.6rem;
-            font-weight: 600;
-            @media screen and (min-width: $lg_breakpoint) {
-                font-size: 1.3rem;
-                line-height: 2rem;
-            }
-            @media screen and (min-width: $xl_breakpoint) {
-                font-size: 1.4rem;
-                line-height: 2rem;
-            }
-        }
+    }
+}
+
+.artistPickTitle {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    font-weight: 600;
+    @media screen and (min-width: $lg_breakpoint) {
+        font-size: 1.3rem;
+        line-height: 2rem;
+    }
+    @media screen and (min-width: $xl_breakpoint) {
+        font-size: 1.4rem;
+        line-height: 2rem;
     }
 }
 
@@ -407,5 +418,8 @@ discoPicture {
 .invisibleSpan {
     display: invisible;
     position: absolute;
-    top: -10rem;
+    top: 0;
+    @media screen and (min-width: $md_breakpoint) {
+        top: -10rem;
+    }
 }

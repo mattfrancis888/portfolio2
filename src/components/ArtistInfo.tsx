@@ -36,6 +36,7 @@ import giphy from "../img/giphy.png";
 import giphyLg from "../img/giphy_lg.gif";
 import airbnbLg from "../img/airbnb_lg.png";
 import growingUp from "../img/growingUp.jpg";
+import me_lg from "../img/me_lg.jpg";
 import {
     XS_SCREEN_SIZE,
     LG_SCREEN_SIZE,
@@ -262,8 +263,8 @@ const ArtistInfo: React.FC<{}> = () => {
                             ? { opacity: "0" }
                             : { opacity: "1" }
                     }
-                    // src="https://i.scdn.co/image/cb843e45099dccf0fa4d6f4071e82603843547cb"
                     src="https://i.scdn.co/image/cc14b787191d396685818c6b2f6d53737257cc2e"
+                    // src={me_lg}
                     alt="artist's banner"
                     onLoad={() => {
                         setTimeout(() => setIsBannerImageLoaded(true), 1000);
@@ -526,18 +527,37 @@ const ArtistInfo: React.FC<{}> = () => {
                     </div>
                     <div className="artistPickContainer">
                         <h2 className="artistInfoSectionTitle">Artist Pick</h2>
-                        <div className="artistPickInfoWrap">
-                            <img
-                                src={growingUp}
-                                alt="song, playlist or album"
-                            ></img>
-                            <div className="artistPickTextWrap">
-                                <h3 className="artistPickTitle">
-                                    Growing Up (feat. Ed Sheeran)
-                                </h3>
-                                <p>Song</p>
+                        <a
+                            href="https://open.spotify.com/album/2kqn09pydzvKvB3xWbAxY4?highlight=spotify:track:44T13PWJ87jb3lFElhVIHx"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <div className="artistPickInfoWrap">
+                                <img
+                                    src={growingUp}
+                                    alt="song, playlist or album"
+                                    onLoad={() => {
+                                        anime({
+                                            targets: ".artistPickInfoWrap",
+
+                                            opacity: [
+                                                {
+                                                    value: [0, 1],
+                                                    duration: 250,
+                                                    easing: "easeOutQuad",
+                                                },
+                                            ],
+                                        });
+                                    }}
+                                ></img>
+                                <div className="artistPickTextWrap">
+                                    <h3 className="artistPickTitle">
+                                        Growing Up (feat. Ed Sheeran)
+                                    </h3>
+                                    <p>Song</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
