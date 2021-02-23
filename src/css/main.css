@@ -457,10 +457,11 @@ body {
 }
 
 .artistCircle {
-  border: 1px solid transparent;
   border-radius: 50%;
   overflow: hidden;
   opacity: 0;
+  width: 100%;
+  border: none;
   margin-bottom: 1rem;
 }
 .artistCircle img {
@@ -469,6 +470,7 @@ body {
 }
 
 .playlistImg {
+  opacity: 0;
   width: 100%;
   margin-bottom: 1rem;
 }
@@ -581,6 +583,7 @@ nav {
 
 .spotifyLogoContainer {
   cursor: pointer;
+  opacity: 0;
   width: 3rem;
   height: 3rem;
   margin-right: 1.4rem;
@@ -1087,6 +1090,7 @@ discoPicture {
 
 .discoImageContainer {
   width: 100%;
+  background-color: #181818;
 }
 .discoImageContainer img {
   width: 100%;

@@ -335,25 +335,7 @@ const ArtistInfo: React.FC<{}> = () => {
     const renderDisco = (): JSX.Element | JSX.Element[] => {
         return discoData.map((disco, index) => {
             return (
-                <div
-                    key={index}
-                    className={`discoContainer`}
-                    // onLoad={() => {
-                    //     anime({
-                    //         targets: `.discoContainer${index}`,
-                    //         // Properties
-                    //         // Animation Parameters
-
-                    //         opacity: [
-                    //             {
-                    //                 value: [0, 1],
-                    //                 duration: 1000,
-                    //                 easing: "easeOutQuad",
-                    //             },
-                    //         ],
-                    //     });
-                    // }}
-                >
+                <div key={index} className={`discoContainer`}>
                     {disco.title === "Kijiji" && (
                         <span
                             className="invisibleSpan"
@@ -377,12 +359,12 @@ const ArtistInfo: React.FC<{}> = () => {
                             <div
                                 className={`discoImageAnimeWrap discoImageAnimeWrap${index}`}
                                 onLoad={() => {
-                                    anime({
-                                        targets: `.squarePlaceholder${index}`,
-                                        width: `0`,
-                                        height: `0`,
-                                        duration: 250,
-                                    });
+                                    // anime({
+                                    //     targets: `.squarePlaceholder${index}`,
+                                    //     width: `0`,
+                                    //     height: `0`,
+                                    //     duration: 250,
+                                    // });
                                     anime({
                                         targets: `.discoImageAnimeWrap${index}`,
                                         // Properties
@@ -414,13 +396,13 @@ const ArtistInfo: React.FC<{}> = () => {
                                     <img src={disco.imgLg} alt="project" />
                                 </picture>
                             </div>
-                            <div
+                            {/* <div
                                 className={`squarePlaceholder squarePlaceholder${index}`}
                             >
                                 <SquarePlaceholder
-                                    className={`squarePlaceholder squarePlaceholder${index}`}
+                                    className={`squarePlaceholder `}
                                 />
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="discoOverviewWrap">

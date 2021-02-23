@@ -8,6 +8,7 @@ import taylorSwift from "../img/taylorSwift.jpg";
 import martinGarrix from "../img/martinGarrix.jpg";
 import edSheeran from "../img/edSheeran.jpg";
 import jCole from "../img/jCole.jpg";
+
 const artistData = [
     {
         name: `Thomas Rhett`,
@@ -55,6 +56,9 @@ const FansAlsoLike: React.FC<{}> = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
+                        {/* <div
+                            className={`placeholderArtistCircle placeholderArtistCircle${index}`}
+                        ></div> */}
                         <div
                             className={`artistCircle artistCircle${index}`}
                             onLoad={() => {
@@ -71,10 +75,19 @@ const FansAlsoLike: React.FC<{}> = () => {
                                         },
                                     ],
                                 });
+                                // anime({
+                                //     targets: `.placeholderArtistCircle${index}`,
+                                //     // Properties
+                                //     // Animation Parameters
+
+                                //     width: "0",
+                                //     height: "0",
+                                // });
                             }}
                         >
                             <img src={artist.profileImg} alt="artist" />
                         </div>
+
                         <h1>
                             {artist.profileImg === chainsmokers && width > 400
                                 ? "The Chainsmokers"

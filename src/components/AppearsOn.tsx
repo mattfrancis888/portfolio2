@@ -57,21 +57,20 @@ const AppearsOn: React.FC<{}> = () => {
                     >
                         <div
                             className={`playlistImg playlistImg${index}`}
-                            // onLoad={() => {
-                            //     anime({
-                            //         targets: `.playlistImg${index}`,
-                            //         // Properties
-                            //         // Animation Parameters
-
-                            //         opacity: [
-                            //             {
-                            //                 value: [0, 1],
-                            //                 duration: 250,
-                            //                 easing: "easeOutQuad",
-                            //             },
-                            //         ],
-                            //     });
-                            // }}
+                            onLoad={() => {
+                                anime({
+                                    targets: `.playlistImg${index}`,
+                                    // Properties
+                                    // Animation Parameters
+                                    opacity: [
+                                        {
+                                            value: [0, 1],
+                                            duration: 250,
+                                            easing: "easeOutQuad",
+                                        },
+                                    ],
+                                });
+                            }}
                         >
                             <img src={playlist.playlistImg} alt="artist" />
                         </div>

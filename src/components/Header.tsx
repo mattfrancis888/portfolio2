@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import spotify from "../img/spotify_logo.png";
 import { useHistory } from "react-router-dom";
-
+import anime from "animejs/lib/anime.es.js";
 interface HeaderProps {
     artistName: string;
 }
@@ -30,6 +30,21 @@ const Header: React.FC<HeaderProps> = (props) => {
                 className="spotifyLogoContainer"
                 onClick={() => {
                     history.push("/");
+                }}
+                onLoad={() => {
+                    anime({
+                        targets: `.spotifyLogoContainer`,
+                        // Properties
+                        // Animation Parameters
+
+                        opacity: [
+                            {
+                                value: [0, 1],
+                                duration: 250,
+                                easing: "easeOutQuad",
+                            },
+                        ],
+                    });
                 }}
             >
                 <img src={spotify} alt="spotify logo" />
