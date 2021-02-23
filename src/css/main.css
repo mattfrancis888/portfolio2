@@ -1091,6 +1091,7 @@ discoPicture {
 .discoImageContainer {
   width: 100%;
   background-color: #181818;
+  min-height: 20rem;
 }
 .discoImageContainer img {
   width: 100%;
