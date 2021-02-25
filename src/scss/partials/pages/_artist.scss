@@ -25,7 +25,11 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+        // background: linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.7) 100%
+        );
     }
     img {
         width: 100%;
@@ -157,6 +161,7 @@
 
         @media screen and (min-width: $lg_breakpoint) {
             font-size: 1.9rem;
+            letter-spacing: 0.05rem;
         }
     }
 }
@@ -440,7 +445,7 @@ discoPicture {
     margin-left: 2rem;
     text-transform: uppercase;
     padding: 1rem 5rem;
-    border: 2px solid white;
+    border: 2px solid $spotify-grey;
     color: white;
     background-color: transparent;
     font-weight: 900;
@@ -449,6 +454,11 @@ discoPicture {
     cursor: pointer;
     @media screen and (min-width: $md_breakpoint) {
         font-size: 1.4rem;
+    }
+    &:hover {
+        transform: scale(1.1, 1.1);
+        border: 2px solid white;
+        transition: all 0.1s ease;
     }
 }
 .discoContainer {

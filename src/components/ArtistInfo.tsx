@@ -14,12 +14,13 @@ import { FaPlay } from "react-icons/fa";
 import linkedin from "../img/linkedin.gif";
 import linkedin_lg from "../img/linkedin_lg.png";
 import kijiji from "../img/kijiji.png";
-import kijijiLg from "../img/kijiji_lg.png";
+import kijijiLg from "../img/kijiji_lg_2.png";
 import multiDocker from "../img/multi_docker.png";
+import multiDockerLg from "../img/multi_docker_lg.png";
 import auth from "../img/auth.jpg";
 import authLg from "../img/auth_lg.jpg";
 import dreamworks from "../img/dreamworks.png";
-import dreamworksLg from "../img/dreamworks_lg.gif";
+import dreamworksLg from "../img/dreamworks_lg_2.png";
 import spotify from "../img/spotify.png";
 import spotifyLg from "../img/spotify_lg.jpg";
 import appStore from "../img/app_store.png";
@@ -53,14 +54,13 @@ const discoData = [
         stack: `Docker, AWS Elastic Beanstalk,
         TravisCI, React, PostgreSQL, Express,
         React-Testing-Library`,
-        description: ` A single-page app that shows the categories
-        available (stored in PostgreSQL) from a previous
-        project, Kijiji. Built to understand Docker, AWS
+        description: `A single-page app that shows the categories available for a Kijiji Listing. 
+        Used the same database from a previous project, Kijiji. Built to understand Docker, AWS
         infrastructure (eg: EC2, S3, RDS, VPS, Security
         Groups, etc), the deployment process to AWS Elastic
         Beanstalk, and CI/CD flow.`,
         img: multiDocker,
-        imgLg: multiDocker,
+        imgLg: multiDockerLg,
         demo: `https://multi-docker.vercel.app/`,
         github: `https://github.com/mattfrancis888/multi-docker`,
     },
