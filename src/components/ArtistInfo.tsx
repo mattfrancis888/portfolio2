@@ -355,8 +355,23 @@ const ArtistInfo: React.FC<{}> = () => {
                         ></span>
                     )}
                     <div className="discoImageAndOverviewWrap">
-                        <div className={`discoImageContainer`}>
-                            <div
+                        <div
+                            className={`discoImageContainer discoImageContainer${index}`}
+                            onLoad={() => {
+                                anime({
+                                    targets: `.discoImageContainer${index}`,
+
+                                    opacity: [
+                                        {
+                                            value: [0, 1],
+                                            duration: 250,
+                                            easing: "easeOutQuad",
+                                        },
+                                    ],
+                                });
+                            }}
+                        >
+                            {/* <div
                                 className={`discoImageAnimeWrap discoImageAnimeWrap${index}`}
                                 onLoad={() => {
                                     // anime({
@@ -373,37 +388,37 @@ const ArtistInfo: React.FC<{}> = () => {
                                         opacity: [
                                             {
                                                 value: [0, 1],
-                                                duration: 250,
+                                                duration: 2500,
                                                 easing: "easeOutQuad",
                                             },
                                         ],
-                                        width: `100%`,
+                                         width: `100%`,
                                         height: `100%`,
                                     });
                                 }}
+                            > */}
+                            <picture
+                                className={`discoPicture discoPicture${index}`}
                             >
-                                <picture
-                                    className={`discoPicture discoPicture${index}`}
-                                >
-                                    <source
-                                        media={`(min-width:${LG_SCREEN_SIZE}px)`}
-                                        srcSet={disco.imgLg}
-                                    />
-                                    <source
-                                        media={`(min-width:${XS_SCREEN_SIZE}px)`}
-                                        srcSet={disco.img}
-                                    />
-                                    <img src={disco.imgLg} alt="project" />
-                                </picture>
-                            </div>
-                            {/* <div
+                                <source
+                                    media={`(min-width:${LG_SCREEN_SIZE}px)`}
+                                    srcSet={disco.imgLg}
+                                />
+                                <source
+                                    media={`(min-width:${XS_SCREEN_SIZE}px)`}
+                                    srcSet={disco.img}
+                                />
+                                <img src={disco.imgLg} alt="project" />
+                            </picture>
+                        </div>
+                        {/* <div
                                 className={`squarePlaceholder squarePlaceholder${index}`}
                             >
                                 <SquarePlaceholder
                                     className={`squarePlaceholder `}
                                 />
                             </div> */}
-                        </div>
+                        {/* </div> */}
 
                         <div className="discoOverviewWrap">
                             <h2 className="discoTitle">{disco.title}</h2>
