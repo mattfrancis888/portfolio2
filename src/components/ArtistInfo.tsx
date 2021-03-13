@@ -38,6 +38,7 @@ import giphyLg from "../img/giphy_lg.gif";
 import airbnbLg from "../img/airbnb_lg.png";
 import growingUp from "../img/growingUp.jpg";
 import me2 from "../img/me2.jpg";
+import netflix from "../img/netflix.png";
 import {
     XS_SCREEN_SIZE,
     LG_SCREEN_SIZE,
@@ -49,6 +50,23 @@ import About from "./About";
 import AppearsOn from "./AppearsOn";
 import SquarePlaceholder from "./SquarePlaceholder";
 const discoData = [
+    {
+        title: `Netflix`,
+        stack: `Boyce Codd Normal Form database on
+        PostgreSQL, React, Redux, Express, Typescript,
+        React-Testing-Library, TravisCI`,
+        description: `Replication of Netflix website. Database is created
+        in BCNF (Boyce Codd Normal Form; database diagram is
+        shown in README). Authentication is done via cookies
+        that stores access tokens and refresh tokens (JWTs);
+        users can add and remove titles to their watchlist; and
+        users can search for titles. Data is stored on
+        PostgreSQL.`,
+        img: netflix,
+        imgLg: netflix,
+        demo: `https://netflix-project.herokuapp.com/`,
+        github: `https://github.com/mattfrancis888/netflix`,
+    },
     {
         title: ` Multi-Docker`,
         stack: `Docker, AWS Elastic Beanstalk,
