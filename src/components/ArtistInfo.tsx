@@ -39,6 +39,7 @@ import airbnbLg from "../img/airbnb_lg.png";
 import growingUp from "../img/growingUp.jpg";
 import me2 from "../img/me2.jpg";
 import netflix from "../img/netflix.png";
+import steam from "../img/steam.jpg";
 import {
     XS_SCREEN_SIZE,
     LG_SCREEN_SIZE,
@@ -51,13 +52,29 @@ import AppearsOn from "./AppearsOn";
 import SquarePlaceholder from "./SquarePlaceholder";
 const discoData = [
     {
+        title: `Steam`,
+        stack: `Boyce Codd Normal Form database on
+        PostgreSQL, React, Redux, Express, Typescript,
+        React-Testing-Library, TravisCI`,
+        description: `Replication of Steam website, the largest video game retailer for PC games.
+         Database is created in BCNF (Boyce Codd Normal Form); database diagram is
+         shown in README. Authentication is done via cookies
+          that stores access tokens and refresh tokens (JWTs); users can search for games, 
+          including games that are on sale; users can post, delete, edit their reviews;
+        edit their profile and username; add games to their cart. Data is stored on PostgreSQL.`,
+        img: steam,
+        imgLg: steam,
+        demo: `https://steam-project-matt.herokuapp.com/`,
+        github: `https://github.com/mattfrancis888/steam`,
+    },
+    {
         title: `Netflix`,
         stack: `Boyce Codd Normal Form database on
         PostgreSQL, React, Redux, Express, Typescript,
         React-Testing-Library, TravisCI`,
         description: `Replication of Netflix website. Database is created
-        in BCNF (Boyce Codd Normal Form; database diagram is
-        shown in README). Authentication is done via cookies
+        in BCNF (Boyce Codd Normal Form); database diagram is
+        shown in README. Authentication is done via cookies
         that stores access tokens and refresh tokens (JWTs);
         users can add and remove titles to their watchlist; and
         users can search for titles. Data is stored on
@@ -88,8 +105,8 @@ const discoData = [
         PostgreSQL, React, Redux, Express, Typescript,
         React-Testing-Library`,
         description: `Replication of Kijiji website. Database is created
-        in BCNF (Boyce Codd Normal Form; database diagram is
-        shown in README). Authentication is done via cookies
+        in BCNF (Boyce Codd Normal Form); database diagram is
+        shown in README. Authentication is done via cookies
         that stores access tokens and refresh tokens (JWTs);
         users can create, edit, delete a listing, and see
         all listings by other users. Data is stored on
