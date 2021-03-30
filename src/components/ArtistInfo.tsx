@@ -43,6 +43,8 @@ import netflixLg from "../img/netflix_lg.jpg";
 import lowResNetflixLg from "../img/lowRes/low_res_netflix_lg.jpg";
 import steamLg from "../img/steam_lg.jpg";
 import lowResSteamLg from "../img/lowRes/low_res_steam_lg.jpg";
+import blizzardLg from "../img/blizzard_lg.jpg";
+import lowResBlizzardLg from "../img/lowRes/low_res_blizzard_lg.jpg";
 import {
     XS_SCREEN_SIZE,
     LG_SCREEN_SIZE,
@@ -56,6 +58,18 @@ import SquarePlaceholder from "./SquarePlaceholder";
 import BlurredUpImage from "./BlurredUpImage";
 import { useTransition, animated, useSpring, useTrail } from "react-spring";
 const discoData = [
+    {
+        title: `Blizzard (Currently Working On)`,
+        stack: `React, React-Spring (v9) Redux, Typescript,
+        React-Testing-Library, TravisCI`,
+        description: `Replication of Blizzard's Entertainment's website, known for developing and
+        publishing games such as Call of Duty and World of Warcraft.
+        Building to understand React Spring for animations.`,
+        lowResLg: lowResBlizzardLg,
+        imgLg: blizzardLg,
+        demo: `https://blizzard-roan.vercel.app`,
+        github: `https://github.com/mattfrancis888/blizzard`,
+    },
     {
         title: `Steam`,
         stack: `Boyce Codd Normal Form database on
@@ -361,7 +375,7 @@ const ArtistInfo: React.FC<{}> = () => {
                     src={me2}
                     alt="artist's banner"
                     onLoad={() => {
-                        setTimeout(() => setIsBannerImageLoaded(true), 1000);
+                        setIsBannerImageLoaded(true);
                     }}
                 ></img>
                 <div className="bannerFade"></div>
