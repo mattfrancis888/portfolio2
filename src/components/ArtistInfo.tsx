@@ -25,7 +25,6 @@ import spotifyLg from "../img/spotify_lg.jpg";
 import lowResSpotifyLg from "../img/lowRes/low_res_spotify_lg.jpg";
 import lowResAppStoreLg from "../img/lowRes/low_res_app_store_lg.jpg";
 import appStoreLg from "../img/app_store_lg.jpg";
-import pixar from "../img/pixar.png";
 import pixarLg from "../img/pixar_lg.jpg";
 import lowResPixarLg from "../img/lowRes/low_res_pixar_lg.jpg";
 import musicStreamLg from "../img/music_stream_lg.jpg";
@@ -55,6 +54,7 @@ import About from "./About";
 import AppearsOn from "./AppearsOn";
 import SquarePlaceholder from "./SquarePlaceholder";
 import BlurredUpImage from "./BlurredUpImage";
+import { useTransition, animated, useSpring, useTrail } from "react-spring";
 const discoData = [
     {
         title: `Steam`,
@@ -263,37 +263,87 @@ const discoData = [
     },
 ];
 
+const popularSongs = [
+    {
+        name: "Kijiji",
+        length: "2:08",
+    },
+    {
+        name: "Dreamworks",
+        length: "3:28",
+    },
+    {
+        name: "Pixar",
+        length: "4:01",
+    },
+];
+
 const ArtistInfo: React.FC<{}> = () => {
     const [showMore, setShowMore] = useState(false);
+    const [startSongTrail, setStartSongTrail] = useState(false);
+    const nameSpring = useSpring({
+        from: {
+            transform: "translate3d(0px , 35%, 0px)",
+            opacity: 0,
+        },
+        to: {
+            transform: "translate3d(0px , 0px, 0px)",
+            opacity: 1,
+        },
+        config: {
+            duration: 1250,
+        },
+    });
+    const popularSongTitleSpring = useSpring({
+        from: {
+            transform: "translate3d(-100px,0px,0px)",
+        },
+        to: {
+            transform: "translate3d(0px,0px,0px)",
+        },
+        config: {
+            duration: 1000,
+        },
+    });
+
+    const artistPickSectionSpring = useSpring({
+        from: {
+            transform: "translate3d(0,100px,0px)",
+        },
+        to: {
+            transform: "translate3d(0px,0px,0px)",
+        },
+        config: {
+            duration: 1000,
+        },
+    });
+    const songTrail = useTrail(popularSongs.length, {
+        transform: startSongTrail
+            ? `translate3d(0px,0px,0px)`
+            : `translate3d(-100px,0px,0px)`,
+        opacity: startSongTrail ? 1 : 0,
+
+        config: {
+            duration: 1000,
+        },
+    });
 
     const [showContactDetails, setShowContactDetails] = useState(false);
     const [isBannerImageLoaded, setIsBannerImageLoaded] = useState(false);
+    const [popularSongIndex, setPopularSongIndex] = useState(-1);
     const { width } = useWindowDimensions();
 
-    const popularSong1 = useRef<HTMLLinkElement>(null);
-    const popularSong2 = useRef<HTMLLinkElement>(null);
-    const popularSong3 = useRef<HTMLLinkElement>(null);
-
-    const [popularSong1Clicked, setPopularSong1Clicked] = useState(false);
-    const [popularSong2Clicked, setPopularSong2Clicked] = useState(false);
-    const [popularSong3Clicked, setPopularSong3Clicked] = useState(false);
+    const itemEls = useRef(new Array());
 
     useEffect(() => {
-        if (popularSong1 !== null && popularSong1Clicked) {
-            popularSong1.current?.scrollIntoView({ behavior: "smooth" });
-            setPopularSong1Clicked(false);
-        }
-
-        if (popularSong2 !== null && popularSong2Clicked) {
-            popularSong2.current?.scrollIntoView({ behavior: "smooth" });
-            setPopularSong2Clicked(false);
-        }
-
-        if (popularSong3 !== null && popularSong3Clicked) {
-            popularSong3.current?.scrollIntoView({ behavior: "smooth" });
-            setPopularSong3Clicked(false);
-        }
-    }, [popularSong1Clicked, popularSong2Clicked, popularSong3Clicked]);
+        setStartSongTrail(true);
+    }, []);
+    useEffect(() => {
+        if (popularSongIndex > -1)
+            itemEls.current[popularSongIndex].scrollIntoView({
+                behavior: "smooth",
+            });
+    }, [popularSongIndex]);
 
     const renderHeader = (): JSX.Element => {
         return <Header artistName="Matthew Francis" />;
@@ -315,63 +365,40 @@ const ArtistInfo: React.FC<{}> = () => {
                     }}
                 ></img>
                 <div className="bannerFade"></div>
-                <div className="fullNameAndMonthlyListenerWrap">
+                <animated.div
+                    style={nameSpring}
+                    className="fullNameAndMonthlyListenerWrap"
+                >
                     <h1 className="artistFullName">Matthew Francis</h1>
                     <h3 className="monthlyListeners">
                         50,981,396 monthly listeners
                     </h3>
-                </div>
+                </animated.div>
             </div>
         );
     };
 
     const renderSongs = (): JSX.Element | JSX.Element[] => {
-        return (
-            <React.Fragment>
-                <div
+        return songTrail.map((animation, index) => {
+            return (
+                <animated.div
+                    style={animation}
+                    key={index}
                     className="song"
                     onClick={() => {
-                        setPopularSong1Clicked(true);
+                        setPopularSongIndex(index);
                         setShowMore(true);
                     }}
                 >
                     <div className="songIconAndTitleWrap">
                         <FaPlay className="playAndMusicalNoteicon musicalnoteIcon" />
                         <IoMdMusicalNotes className="playAndMusicalNoteicon" />
-                        <h1>Kijiji</h1>
+                        <h1>{popularSongs[index].name}</h1>
                     </div>
-                    <p className="songLength">2:01</p>
-                </div>
-                <div
-                    className="song"
-                    onClick={() => {
-                        setPopularSong2Clicked(true);
-                        setShowMore(true);
-                    }}
-                >
-                    <div className="songIconAndTitleWrap">
-                        <FaPlay className="playAndMusicalNoteicon musicalnoteIcon" />
-                        <IoMdMusicalNotes className="playAndMusicalNoteicon" />
-                        <h1>Dreamworks</h1>
-                    </div>
-                    <p className="songLength">3:30</p>
-                </div>
-                <div
-                    className="song"
-                    onClick={() => {
-                        setPopularSong3Clicked(true);
-                        setShowMore(true);
-                    }}
-                >
-                    <div className="songIconAndTitleWrap">
-                        <FaPlay className="playAndMusicalNoteicon musicalnoteIcon" />
-                        <IoMdMusicalNotes className="playAndMusicalNoteicon" />
-                        <h1>Pixar</h1>
-                    </div>
-                    <p className="songLength">4:01</p>
-                </div>
-            </React.Fragment>
-        );
+                    <p className="songLength">{popularSongs[index].length}</p>
+                </animated.div>
+            );
+        });
     };
 
     const renderDisco = (): JSX.Element | JSX.Element[] => {
@@ -381,19 +408,19 @@ const ArtistInfo: React.FC<{}> = () => {
                     {disco.title === "Kijiji" && (
                         <span
                             className="invisibleSpan"
-                            ref={popularSong1}
+                            ref={(element) => (itemEls.current[0] = element)}
                         ></span>
                     )}
                     {disco.title === "Dreamworks" && (
                         <span
                             className="invisibleSpan"
-                            ref={popularSong2}
+                            ref={(element) => (itemEls.current[1] = element)}
                         ></span>
                     )}
                     {disco.title === "Pixar" && (
                         <span
                             className="invisibleSpan"
-                            ref={popularSong3}
+                            ref={(element) => (itemEls.current[2] = element)}
                         ></span>
                     )}
                     <div className="discoImageAndOverviewWrap">
@@ -588,12 +615,18 @@ const ArtistInfo: React.FC<{}> = () => {
 
                 <div className="artistInfoAndArtistPickSectionWrap artistInfoSectionWrap">
                     <div className="artistPopularSongsContainer">
-                        <h2 className="artistInfoSectionTitle">
+                        <animated.h2
+                            className="artistInfoSectionTitle"
+                            style={popularSongTitleSpring}
+                        >
                             Popular Songs
-                        </h2>
+                        </animated.h2>
                         {renderSongs()}
                     </div>
-                    <div className="artistPickContainer">
+                    <animated.div
+                        className="artistPickContainer"
+                        style={artistPickSectionSpring}
+                    >
                         <h2 className="artistInfoSectionTitle">Artist Pick</h2>
                         <a
                             href="https://open.spotify.com/album/2kqn09pydzvKvB3xWbAxY4?highlight=spotify:track:44T13PWJ87jb3lFElhVIHx"
@@ -626,7 +659,7 @@ const ArtistInfo: React.FC<{}> = () => {
                                 </div>
                             </div>
                         </a>
-                    </div>
+                    </animated.div>
                 </div>
 
                 <div className="artistInfoSectionWrap">

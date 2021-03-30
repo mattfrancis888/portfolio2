@@ -173,12 +173,18 @@
 }
 
 .artistInfoSectionWrap {
-    padding: 0.5rem 5rem;
+    padding: 0.5rem 2rem;
     @media screen and (min-width: $sm_breakpoint) {
-        padding: 3rem 5rem;
+        padding: 3rem 2.5rem;
     }
     @media screen and (min-width: $md_breakpoint) {
-        padding: 3rem 10rem !important;
+        padding: 3rem 4rem !important;
+    }
+    @media screen and (min-width: $lg_breakpoint) {
+        padding: 3rem 6rem;
+    }
+    @media screen and (min-width: $xl_breakpoint) {
+        padding: 3rem 10rem;
     }
 }
 .artistPickInfoWrap {
@@ -253,15 +259,16 @@
 }
 
 .artistInfoDiscoWrap {
-    @media screen and (min-width: $sm_breakpoint) {
-        padding: 3rem 5rem;
-    }
-    @media screen and (min-width: 650px) {
-        padding: 3rem 10rem;
-    }
-    @media screen and (min-width: $md_breakpoint) {
-        padding: 0;
-    }
+    // padding: 3rem 1.5rem;
+    // @media screen and (min-width: $sm_breakpoint) {
+    //     padding: 3rem 2rem;
+    // }
+    // @media screen and (min-width: 650px) {
+    //     padding: 3rem 2rem;
+    // }
+    // @media screen and (min-width: $md_breakpoint) {
+    //     padding: 0;
+    // }
 }
 
 .artistInfoSectionTitle,
@@ -416,13 +423,13 @@ discoPicture {
     }
 
     @media screen and (min-width: $md_breakpoint) {
-        margin-right: 4rem;
+        margin-right: 2rem;
         width: 50%;
         height: 35rem;
     }
     @media screen and (min-width: $lg_breakpoint) {
         width: 50%;
-        margin-right: 6rem;
+        margin-right: 2.5rem;
         height: 33rem;
     }
 }

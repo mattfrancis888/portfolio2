@@ -8,6 +8,8 @@ import alt from "../img/alt.jpg";
 import rock from "../img/rock.jpg";
 import anime from "animejs/lib/anime.es.js";
 import Loading from "./Loading";
+import { useTransition, animated, useSpring, useTrail } from "react-spring";
+
 const playlistData = [
     {
         name: `Hot Country`,
@@ -43,15 +45,30 @@ const playlistData = [
 ];
 const AppearsOn: React.FC<{}> = () => {
     const [isDoneLoading, setIsDoneLoading] = useState(false);
+    const [startAppearsOnTrail, setStartAppearsOnTrail] = useState(false);
+
+    const appearsOnTrail = useTrail(playlistData.length, {
+        transform: startAppearsOnTrail
+            ? `translate3d(0px,0px,0px)`
+            : `translate3d(0px,100px,0px)`,
+
+        config: {
+            duration: 250,
+        },
+    });
+    useEffect(() => {
+        setStartAppearsOnTrail(true);
+    }, []);
     const renderPlaylists = (): JSX.Element | JSX.Element[] => {
-        return playlistData.map((playlist, index) => {
+        return appearsOnTrail.map((animation, index) => {
             return (
-                <div
+                <animated.div
+                    style={animation}
                     key={index}
                     className="fansAlsoLikeArtistAndAppearsOnContainer"
                 >
                     <a
-                        href={playlist.link}
+                        href={playlistData[index].link}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -72,12 +89,15 @@ const AppearsOn: React.FC<{}> = () => {
                                 });
                             }}
                         >
-                            <img src={playlist.playlistImg} alt="artist" />
+                            <img
+                                src={playlistData[index].playlistImg}
+                                alt="artist"
+                            />
                         </div>
-                        <h1>{playlist.name}</h1>
+                        <h1>{playlistData[index].name}</h1>
                         <h3>Playlist</h3>
                     </a>
-                </div>
+                </animated.div>
             );
         });
     };

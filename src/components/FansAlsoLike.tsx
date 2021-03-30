@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
 import useWindowDimensions from "../windowDimensions";
 import anime from "animejs/lib/anime.es.js";
@@ -8,7 +8,7 @@ import taylorSwift from "../img/taylorSwift.jpg";
 import martinGarrix from "../img/martinGarrix.jpg";
 import edSheeran from "../img/edSheeran.jpg";
 import jCole from "../img/jCole.jpg";
-
+import { useTransition, animated, useSpring, useTrail } from "react-spring";
 const artistData = [
     {
         name: `Thomas Rhett`,
@@ -44,21 +44,34 @@ const artistData = [
 const FansAlsoLike: React.FC<{}> = () => {
     const { width } = useWindowDimensions();
     const [isDoneLoading, setIsDoneLoading] = useState(false);
+    const [startOtherArtistsTrail, setStartOtherArtistsTrail] = useState(false);
+
+    const otherArtistsTrail = useTrail(artistData.length, {
+        transform: startOtherArtistsTrail
+            ? `translate3d(0px,0px,0px)`
+            : `translate3d(0px,100px,0px)`,
+
+        config: {
+            duration: 250,
+        },
+    });
+
+    useEffect(() => {
+        setStartOtherArtistsTrail(true);
+    }, []);
     const renderArtists = (): JSX.Element | JSX.Element[] => {
-        return artistData.map((artist, index) => {
+        return otherArtistsTrail.map((animation, index) => {
             return (
-                <div
+                <animated.div
                     key={index}
+                    style={animation}
                     className="fansAlsoLikeArtistAndAppearsOnContainer"
                 >
                     <a
-                        href={artist.link}
+                        href={artistData[index].link}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        {/* <div
-                            className={`placeholderArtistCircle placeholderArtistCircle${index}`}
-                        ></div> */}
                         <div
                             className={`artistCircle artistCircle${index}`}
                             onLoad={() => {
@@ -75,27 +88,23 @@ const FansAlsoLike: React.FC<{}> = () => {
                                         },
                                     ],
                                 });
-                                // anime({
-                                //     targets: `.placeholderArtistCircle${index}`,
-                                //     // Properties
-                                //     // Animation Parameters
-
-                                //     width: "0",
-                                //     height: "0",
-                                // });
                             }}
                         >
-                            <img src={artist.profileImg} alt="artist" />
+                            <img
+                                src={artistData[index].profileImg}
+                                alt="artist"
+                            />
                         </div>
 
                         <h1>
-                            {artist.profileImg === chainsmokers && width > 400
+                            {artistData[index].profileImg === chainsmokers &&
+                            width > 400
                                 ? "The Chainsmokers"
-                                : artist.name}
+                                : artistData[index].name}
                         </h1>
                         <h3>Artist</h3>
                     </a>
-                </div>
+                </animated.div>
             );
         });
     };
