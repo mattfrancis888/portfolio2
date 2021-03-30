@@ -404,7 +404,11 @@ discoPicture {
     opacity: 0;
     width: 100%;
     background-color: $spotify-light-black;
-    min-height: 20rem;
+
+    height: 20rem;
+    @media screen and (min-width: $sm_breakpoint) {
+        height: 25rem;
+    }
     img {
         width: 100%;
         height: 100%;
@@ -414,8 +418,10 @@ discoPicture {
     @media screen and (min-width: $md_breakpoint) {
         margin-right: 4rem;
         width: 50%;
+        height: 35rem;
     }
     @media screen and (min-width: $lg_breakpoint) {
+        width: 50%;
         margin-right: 6rem;
         height: 33rem;
     }

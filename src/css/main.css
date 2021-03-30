@@ -1093,7 +1093,12 @@ discoPicture {
   opacity: 0;
   width: 100%;
   background-color: #181818;
-  min-height: 20rem;
+  height: 20rem;
+}
+@media screen and (min-width: 520px) {
+  .discoImageContainer {
+    height: 25rem;
+  }
 }
 .discoImageContainer img {
   width: 100%;
@@ -1104,10 +1109,12 @@ discoPicture {
   .discoImageContainer {
     margin-right: 4rem;
     width: 50%;
+    height: 35rem;
   }
 }
 @media screen and (min-width: 992px) {
   .discoImageContainer {
+    width: 50%;
     margin-right: 6rem;
     height: 33rem;
   }
